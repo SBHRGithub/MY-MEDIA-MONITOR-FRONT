@@ -1,0 +1,31 @@
+<form [formGroup]="cardForm" (submit)="onSubmit()">
+    <label class="form-label">Viewing Status</label>
+    <select formControlName="viewingStatus">
+        <option value=""></option>
+        <option value="Not seen">Not seen</option>
+        <option value="Ongoing">Ongoing</option>
+        <option value="Viewed">Viewed</option>
+        <option value="To see">To see</option>
+        <option value="Unfollow">Unfollow</option>
+    </select>
+
+    <label class="form-label">My score</label>
+    <select formControlName="myScore">
+        <option value=""></option>
+        <option value="0">Shitty</option>
+        <option value="1">Bad</option>
+        <option value="2">Tolerable</option>
+        <option value="3">Ordinary</option>
+        <option value="4">Good</option>
+        <option value="5">Very good</option>
+        <option value="6">Not rated</option>
+    </select>
+
+    <label class="form-label">Ongoing season</label>
+    <input formControlName="ongoingSeason">
+
+    <label class="form-label">Ongoing episode</label>
+    <input formControlName="ongoingEpisode">
+    
+    <button type="submit">Submit</button>
+</form>

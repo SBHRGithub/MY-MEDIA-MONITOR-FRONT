@@ -1,0 +1,28 @@
+/*
+Fields CSS
+mat-form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+*/
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label{
+    margin-bottom: 0;
+}
+
+input, select{
+    margin-bottom: 10px;
+}
+
+button{
+    max-width: 600px;
+    margin-top: 10px;
+}
+
+

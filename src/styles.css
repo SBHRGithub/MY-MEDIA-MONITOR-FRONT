@@ -1,13 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* import Boostrap CSS */
+/*Import Boostrap CSS*/
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-/* Our style */
-body {
-  background: rgb(26 26 30);
-  color: rgb(227, 227, 227)
+/*Responsive*/
+@media screen and (min-width:768px) and (max-width: 1024px) {
+  div {
+    width:100%;
+  }
+  div.card{
+    width: 47%;
+  }
 }
 
-html, body { height: calc(100vh - 60px); }
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+@media screen and (max-width: 767px) {
+  div {
+    width:100%;
+  }
+  div.card{
+    width: 100%;
+  }
+}
+
+/*Variables*/
+html{
+  --darkNightBlue : #032541;
+  --lightGreyBorder : #e3e3e3;
+  --lightGreyBackground : #d9d9d9;
+  --tipColor:#666;
+  --maxPageWidth: 2000px;
+  --borderRadius: 8px;
+}
+
+/*General CSS style of application*/
+html{
+  display:block;
+  width:100%;
+  height:100%;
+  font-size:100%;
+  font-family: sans-serif;
+}
+
+body {
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: auto;
+  background: rgb(255 255 255);
+  color: rgb(0, 0, 0);
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1em;
+  width: 100%;
+  box-sizing:border-box;
+
+}
+
+
+
+/*html, body { height: calc(100vh - 60px); }*/
+
+

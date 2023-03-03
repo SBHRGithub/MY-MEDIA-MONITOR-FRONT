@@ -1,0 +1,8 @@
+div {
+    display: flex;
+    position: relative;
+    top: 100px;
+}
+p.error {
+    color: rgb(194 65 65);
+}

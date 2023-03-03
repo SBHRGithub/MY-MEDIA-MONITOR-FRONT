@@ -1,0 +1,112 @@
+div.page{
+    display:flex;
+    flex : 1 1 auto;
+    min-height: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: var(--darkNightBlue);
+    height: 64px;
+    width: 100%;
+    z-index: 10;
+}
+
+header div.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 17px;
+    padding-right: 17px;
+    width: 100%;
+    height: 6%;
+    background-color: var(--darkNightBlue);
+    color: white;
+    font-family: 'Courgette', cursive;
+    font-size: 20px;
+    position: fixed;
+    top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 1;
+}
+
+a.navbar-brand-home{
+    display: block;
+    margin-right: 16px;
+}
+
+div.navbar-right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.navbar-right ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+}
+
+li.login{
+    margin-left: 30px;
+    display: flex;
+}
+
+a.login{
+    display: flex;
+    align-items: center;
+}
+
+li.register{
+    margin-left: 30px;
+    display: flex;
+}
+
+a.register{
+    display: flex;
+    align-items: center;
+}
+
+footer{
+    padding-left: 17px;
+    padding-right: 17px;
+    width: 100%;
+    height: 14%;
+    background-color: var(--darkNightBlue);
+    color:white;
+    position: fixed;
+    bottom: 0;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+pre {
+    /*font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;*/
+    font-family: 'Courgette', cursive;
+    font-size: 14px;
+}
+
+h1 {
+    font-family: 'Courgette', cursive;  
+    font-size: 20px; 
+}

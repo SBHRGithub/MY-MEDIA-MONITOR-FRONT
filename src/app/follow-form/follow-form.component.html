@@ -1,0 +1,78 @@
+<!--
+<Input field
+<mat-form-field appearance="fill">
+    <mat-label>Input title...</mat-label>
+    <input matInput>
+</mat-form-field>
+
+<!--Select fields
+<mat-form-field appearance="fill">
+    <mat-label>Select media type...</mat-label>
+    <mat-select>
+      <mat-option value="movie">Movie</mat-option>
+      <mat-option value="tv">TV Show</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Select viewing status...</mat-label>
+    <mat-select>
+      <mat-option value="Not seen">Not seen</mat-option>
+      <mat-option value="Ongoing">Ongoing</mat-option>
+      <mat-option value="Viewed">Viewed</mat-option>
+      <mat-option value="To see">To see</mat-option>
+      <mat-option value="Unfollow">Unfollow</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Select my score...</mat-label>
+    <mat-select>
+      <mat-option value="0">Shitty</mat-option>
+      <mat-option value="1">Bad</mat-option>
+      <mat-option value="2">Tolerable</mat-option>
+      <mat-option value="3">Ordinary</mat-option>
+      <mat-option value="4">Good</mat-option>
+      <mat-option value="5">Very Good</mat-option>
+      <mat-option value="6">Not rated</mat-option>
+    </mat-select>
+</mat-form-field>
+
+Button to submit
+<button mat-button>Load</button>
+-->
+
+<form [formGroup]="followForm" (submit)="onSubmit()">
+    <label class="form-label">Title</label>
+    <input formControlName="title">
+
+    <label class="form-label">Media type</label>
+    <select formControlName="mediaType">
+        <option value=""></option>
+        <option value="movie">Movie</option>
+        <option value="tv">TV Show</option>
+    </select>
+
+    <label class="form-label">Viewing Status</label>
+    <select formControlName="viewingStatus">
+        <option value=""></option>
+        <option value="Not seen">Not seen</option>
+        <option value="Ongoing">Ongoing</option>
+        <option value="Viewed">Viewed</option>
+    </select>
+
+    <label class="form-label">My score</label>
+    <select formControlName="myScore">
+        <option value=""></option>
+        <option value="0">Shitty</option>
+        <option value="1">Bad</option>
+        <option value="2">Tolerable</option>
+        <option value="3">Ordinary</option>
+        <option value="4">Good</option>
+        <option value="5">Very good</option>
+        <option value="6">Not rated</option>
+    </select>
+
+    <button type="submit">Load</button>
+</form>
+
+
+

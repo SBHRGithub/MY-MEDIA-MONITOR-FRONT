@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AlertService } from '../services/alert.service';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-card-form',
-  templateUrl: './card-form.component.html',
-  styleUrls: ['./card-form.component.css']
+  selector: 'app-card-form-tv',
+  templateUrl: './card-form-tv.component.html',
+  styleUrls: ['./card-form-tv.component.css']
 })
-export class CardFormComponent {
+export class CardFormTvComponent {
   
   cardForm!:FormGroup;
   isSubmitted:boolean = false;
@@ -18,8 +16,6 @@ export class CardFormComponent {
   constructor(
     private fb:FormBuilder, 
     public userSvc: UserService,
-    private alertSvc: AlertService,
-    private router:Router
     ) {}
 
   ngOnInit() {

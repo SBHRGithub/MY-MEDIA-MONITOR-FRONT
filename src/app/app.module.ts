@@ -5,14 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './list/list.component';
+import { ListMovieSingleTMDBComponent} from './list-movie-single-tmdb/list-movie-single-tmdb.component';
+import { ListTvSingleTmdbComponent } from './list-tv-single-tmdb/list-tv-single-tmdb.component';
+import { ListMovieMultiTmdbComponent } from './list-movie-multi-tmdb/list-movie-multi-tmdb.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { FollowFormComponent } from './follow-form/follow-form.component';
-import { SearchbarComponent } from './searchbar/searchbar.component';
-import { CardFormComponent } from './card-form/card-form.component';
+import { SearchbarMovieComponent } from './searchbar-movie/searchbar-movie.component';
+import { SearchbarTvComponent } from './searchbar-tv/searchbar-tv.component';
+import { CardFormMovieComponent } from './card-form-movie/card-form-movie.component';
+import { CardFormTvComponent } from './card-form-tv/card-form-tv.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+
 
 /* Material import for alert message*/
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -26,6 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 /* Material imports for FollowFormComponent Button*/
 import {MatButtonModule} from '@angular/material/button';
+import { ListTvMultiTmdbComponent } from './list-tv-multi-tmdb/list-tv-multi-tmdb.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +41,14 @@ import {MatButtonModule} from '@angular/material/button';
     LoginFormComponent,
     RegisterFormComponent,
     FollowFormComponent,
-    SearchbarComponent,
-    CardFormComponent,
+    SearchbarMovieComponent,
+    SearchbarTvComponent,
+    CardFormTvComponent,
+    ListMovieSingleTMDBComponent,
+    ListTvSingleTmdbComponent,
+    CardFormMovieComponent,
+    ListMovieMultiTmdbComponent,
+    ListTvMultiTmdbComponent,
   ],
   imports: [
     BrowserModule,

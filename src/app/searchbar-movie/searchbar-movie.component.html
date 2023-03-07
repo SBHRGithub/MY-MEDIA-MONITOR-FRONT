@@ -1,0 +1,18 @@
+<div class="searchbar">
+    <div class="search">
+        <div class="subsearch">
+            <!--Searchbar input-->
+            <input #field (keyup)="onKeyupInput(field.value)" type="text" class="form-control" placeholder="Search for a movie...">
+            
+            <!--Display list of movies in searchbar-->
+            <ul *ngIf="searchedMovies.length>0" class="searchbar-display">
+                <li [routerLink]="['/list-movie-multi-tmdb']" class="all-movies">All movies for query</li>
+                <li [routerLink]="['/list-movie-single-tmdb', movie.externalId]" *ngFor="let movie of searchedMovies">
+                    {{ movie.title }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

@@ -1,3 +1,4 @@
+
 div.searchbar{
     width: 100%;
     position:relative;
@@ -7,8 +8,11 @@ div.searchbar{
     border-bottom: 1 px solid var(--lightGreyBorder);
     margin-left: 0;
     padding-left: 0;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 14px;
 }
 
+/*
 div.search{
     width: 100%;
     height: 44px;
@@ -40,8 +44,40 @@ input.form-control {
     appearance: none;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     border: none;
+    position: sticky;
+    top:0;
+    z-index:2;
 }
+*/
 
 input.form-control:focus {
-    box-shadow: 0 0 0 0.1rem var(--lightGreyBorder);
-}
+    box-shadow: 0 0 0 0.1rem var(--darkNightBlue)
+  }
+  input.form-control {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  ul {
+    z-index: 1;
+    background: rgb(244 244 244 / 99%);
+    position: sticky;
+    top: 40px;
+    overflow: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  ul li {
+    list-style: none;
+    padding: 5px;
+    font-size: 1.3em;
+    color: rgb(141, 141, 141);
+  }
+  ul li:hover {
+    cursor: pointer;
+    background: rgb(202 201 203);
+  }
+
+  li.all-movies{
+    font-weight: bolder;
+  }

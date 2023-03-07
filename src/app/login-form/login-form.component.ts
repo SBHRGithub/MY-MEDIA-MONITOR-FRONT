@@ -52,7 +52,6 @@ export class LoginFormComponent {
             if(response.jwt) {
               this.router.navigate(['/']);
               this.alertSvc.showAlert('You are connected');
-              console.log(response.status);
             }
           },
           error: (err) => console.log(err)

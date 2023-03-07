@@ -1,0 +1,53 @@
+<div>
+    <div class="column-wrapper">
+        <div class="content-wrapper">
+            <div class="follow-form-column">
+                <div class="follow-form-panel">
+                    <h3 class="follow-form-title">Follow my media</h3>
+                    <!--follow-form component to request media from Video App base-->
+                    <app-follow-form></app-follow-form>
+                    <p class="tip">Better get connecting, right?</p>
+                </div>
+            </div>
+            <div class="list-column">
+                <div class="list-panel">
+                    <div class="media-results">
+                        <div class="results">
+                            <div class="card">
+                                <div class="wrapper">
+                                    <div class="image">
+                                        <div class="poster">
+                                            <img [src]="getImgFullUrl(movie.posterPath)" alt="Picture">
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid details">
+                                        <div class="first-line">
+                                            <h2 class="title">{{ movie.title }}</h2>
+                                            <h2 class="release-date">{{movie.releaseDate | date: 'longDate'}}</h2>
+                                            <h2 class="genre">{{ movie.genre }}</h2>
+                                            <h2 class="mediatype">Movie</h2>
+                                        </div>
+                                        <h2 class="overview">{{movie.overview}}</h2>
+                                        <div class="row align-items-start">
+                                            <div class="col">
+                                                <h2 class="vote-average">{{movie.voteAverage | number:'1.0-0'}}<span>/10</span></h2>
+                                            </div>
+                                            <div class="col">
+                                                <h2 class="status"></h2>
+                                                <h2 class="my-score"></h2>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card-form">
+                                                    <app-card-form-movie></app-card-form-movie>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

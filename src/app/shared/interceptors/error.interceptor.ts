@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     .pipe(
       tap( {
         error: (err) => {
-          console.log(err.status)
+          console.log(err)
            if(err instanceof HttpErrorResponse) {
             switch(err.status) {
               case 400:

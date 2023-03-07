@@ -108,7 +108,14 @@ div.wrapper{
     max-width: calc(100w - 82px);
 }
 
-div.image{
+/*div.image{
+    min-width: 94px;
+    width: 94px;
+    height: 141px;
+    box-sizing: border-box;
+}*/
+
+img{
     min-width: 94px;
     width: 94px;
     height: 141px;
@@ -116,8 +123,9 @@ div.image{
 }
 
 div.poster{
-    width: 0%;
-    height: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkNightBlue);
 }
 
 /*div.details{
@@ -137,7 +145,7 @@ div.first-line{
     margin-left: 0px;
 }
 h2.title{
-    width: 20%;
+    width: 50%;
     display: flex;
     font-family: 'Source Sans Pro', Arial, sans-serif;
     font-size: 19px;
@@ -165,32 +173,13 @@ h2.my-score {
     padding: 0px;
 }
 
-h2.seasons-number {
-    width: 100%;
-    height: 16px;
-    display: flex;
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
-    margin: 0;
-    padding: 0px;
-}
-
-h2.episodes-number {
-    width: 100%;
-    height: 16px;
-    display: flex;
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
-    margin: 0;
-    padding: 0px;
-}
-
 h2.mediatype {
     width: 20%;
     height: 16px;
     display: flex;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: bold;
     margin: 0;
     padding: 0px;
 }
@@ -209,35 +198,17 @@ h2.release-date {
     width: 90%;
     display: flex;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
+    font-size: 16px;
     margin: 0;
     padding: 0px;
+    color: var(--dateColor);
 }
 
 h2.vote-average {
     width: 100%;
     display: flex;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
-    margin: 0;
-    padding: 0px;
-}
-
-h2.ongoing-season {
-    width: 100%;
-    height: 16px;
-    display: flex;
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
-    margin: 0;
-    padding: 0px;
-}
-
-h2.ongoing-episode {
-    width: 100%;
-    display: flex;
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     margin: 0;
     padding: 0px;
 }

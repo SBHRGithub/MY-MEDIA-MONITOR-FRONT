@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardFormComponent } from './card-form.component';
+import { DetailComponent } from './list-movie-single-tmdb.component';
 
-describe('CardFormComponent', () => {
-  let component: CardFormComponent;
-  let fixture: ComponentFixture<CardFormComponent>;
+describe('DetailComponent', () => {
+  let component: DetailComponent;
+  let fixture: ComponentFixture<DetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardFormComponent ]
+      declarations: [ DetailComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CardFormComponent);
+    fixture = TestBed.createComponent(DetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

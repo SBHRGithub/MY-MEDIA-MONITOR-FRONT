@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { ListMovieSingleTMDBComponent} from './list-movie-single-tmdb/list-movie-single-tmdb.component';
 import { ListTvSingleTmdbComponent } from './list-tv-single-tmdb/list-tv-single-tmdb.component';
 import { ListMovieMultiTmdbComponent } from './list-movie-multi-tmdb/list-movie-multi-tmdb.component';
+import { ListTvMultiTmdbComponent } from './list-tv-multi-tmdb/list-tv-multi-tmdb.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { FollowFormComponent } from './follow-form/follow-form.component';
@@ -32,7 +33,6 @@ import {MatSelectModule} from '@angular/material/select';
 
 /* Material imports for FollowFormComponent Button*/
 import {MatButtonModule} from '@angular/material/button';
-import { ListTvMultiTmdbComponent } from './list-tv-multi-tmdb/list-tv-multi-tmdb.component';
 
 @NgModule({
   declarations: [

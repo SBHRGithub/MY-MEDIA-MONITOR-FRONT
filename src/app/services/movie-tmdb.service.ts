@@ -18,9 +18,7 @@ export class MovieTMDBService {
   searchedMovies$: BehaviorSubject<any> = new BehaviorSubject([]);
 
 
-  constructor(private http:HttpClient) { 
-    console.log(this);
-  }
+  constructor(private http:HttpClient) { }
 
   public getMovieDetails$():Observable<MovieDetailsTMDBModel> {
     return this.movieDetails$.asObservable();
@@ -51,7 +49,6 @@ export class MovieTMDBService {
       })
     )
     .subscribe( (movies:MovieSearchTMDBModel[]) => {
-      console.log(movies);
       let actualMovies = this.movies$.getValue();
       let allMovies:any = [...actualMovies, ...movies];
       this.movies$.next(allMovies);  
@@ -72,7 +69,6 @@ export class MovieTMDBService {
     )
     .subscribe((foundMovies:MovieSearchTMDBModel[]) => this.searchedMovies$.next(foundMovies));
   }
-
 
   getMovieDetailsFromApi(externalId:number): void{
     let params = new HttpParams()

@@ -1,11 +1,11 @@
 <div class="searchbar">
     <div class="search">
         <div class="subsearch">
-            <!--Searchbar input-->
+
             <input #field (keyup)="onKeyupInput(field.value)" type="text" class="form-control" placeholder="Search for a tv show...">
             
-            <!--Display list of movies in searchbar-->
             <ul *ngIf="searchedTvs.length>0">
+                <li [routerLink]="['/list-tv-multi-tmdb']" class="all-tvs">All TV Shows that match</li>
                 <li [routerLink]="['/list-tv-single-tmdb', tv.externalId]" *ngFor="let tv of searchedTvs">
                     {{ tv.name }}
                 </li>

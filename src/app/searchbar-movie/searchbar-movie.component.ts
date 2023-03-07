@@ -24,11 +24,10 @@ export class SearchbarMovieComponent {
   }
 
   onKeyupInput(userSearch:string) {
-    //let essai = userSearch;
-    //localStorage.setItem('userSearch', essai);
+
     this.query = userSearch;
-    console.log(this.query);
     this.dataTransfer.setData(this.query);
+    
     if(userSearch.length==0) {
       this.movieSvc.setSearchedMovies$([]);
     }

@@ -13,12 +13,11 @@ export class TvTmdbService {
 
   environmenT = environment;
 
+  tvs$ = new BehaviorSubject<TVSearchTMDBModel[]>([]);
   private tvDetails$ = new BehaviorSubject<TVDetailsTMDBModel | any>({});
-  private searchedTvs$: BehaviorSubject<any> = new BehaviorSubject([]);
+  searchedTvs$: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  constructor(private http:HttpClient) { 
-    console.log(this);
-  }
+  constructor(private http:HttpClient) { }
 
   public getTvDetails$():Observable<TVDetailsTMDBModel> {
     return this.tvDetails$.asObservable();
@@ -36,6 +35,25 @@ export class TvTmdbService {
     this.searchedTvs$.next(tvs);
   }
 
+  getTvsFromApi():void {
+
+    let params = new HttpParams()
+    .set('api_key', this.environmenT.API_KEY_TMDB)
+    .set('language', 'fr');
+
+    this.http.get(this.environmenT.API_TMDB_SEARCHTVSHOWS, {params})
+    .pipe(
+      map( (apiResponse:any) => {
+        return apiResponse.results.map((tv: any) => new TVSearchTMDBModel(tv))
+      })
+    )
+    .subscribe( (tvs:TVSearchTMDBModel[]) => {
+      let actualTvs = this.tvs$.getValue();
+      let allTvs:any = [...actualTvs, ...tvs];
+      this.tvs$.next(allTvs);  
+    });
+  }
+  
   searchTvsFromApi(userSearch:string): void{
     let params = new HttpParams()
     .set('api_key', this.environmenT.API_KEY_TMDB)

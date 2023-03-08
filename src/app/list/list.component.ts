@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MovieSearchTMDBModel } from '../shared/models/movie-search-tmdb.model';
 import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieTMDBService } from '../services/movie-tmdb.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,8 @@ export class ListComponent {
     private route:ActivatedRoute, 
     private router:Router,
     private movieSvc: MovieTMDBService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public userSvc : UserService
     ){
     console.log(this);
   }

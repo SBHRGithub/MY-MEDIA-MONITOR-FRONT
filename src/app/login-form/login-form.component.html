@@ -1,7 +1,6 @@
-<div class="row justify-content-center">
-    <form *ngIf="userSvc.isAuth()" [formGroup]="loginForm" class="col-12 col-md-6" (submit)="onSubmit()">
-        <h1>LOGIN</h1>
-        <label class="form-label">EMAIL</label>
+<div>
+    <form [formGroup]="loginForm" class="col-12 col-md-6" (submit)="onSubmit()">
+        <label class="form-label">Email</label>
         <input class="form-control" formControlName="email" type="text">
 
         <!-- Mail error-->
@@ -14,7 +13,7 @@
         *ngIf="loginForm.touched && 
         loginForm.controls['email'].errors?.['email']">Please enter a valid email</p>
 
-        <label class="form-label">PASSWORD</label>
+        <label class="form-label">Password</label>
         <input class="form-control" formControlName="password" type="password">
 
         <!-- Password error-->
@@ -23,8 +22,6 @@
               loginForm.touched && 
               loginForm.controls['password'].hasError('required')">Password required</p>
 
-        <div class="d-flex justify-content-right">
-            <button type="submit">Login</button>
-        </div>
+        <button type="submit">Login</button>
     </form>
 </div>

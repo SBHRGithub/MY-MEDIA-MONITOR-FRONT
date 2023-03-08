@@ -9,10 +9,10 @@ export class AlertService {
   constructor(private snackbar:MatSnackBar) { }
 
   showAlert(msg:string) {
-    this.snackbar.open(msg, 'Shut', {
+    this.snackbar.open(msg, 'X', {
       horizontalPosition: 'center',
       verticalPosition:'top',
-      duration: 10000
+      duration: 5000
     })
   }
 }

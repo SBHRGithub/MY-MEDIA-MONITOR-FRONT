@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TvTmdbService } from '../services/tv-tmdb.service';
 import { TVSearchTMDBModel } from '../shared/models/tv-search-tmdb.model';
 import { DataTransferService } from '../services/data-transfer.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-searchbar-tv',
@@ -15,7 +16,8 @@ export class SearchbarTvComponent {
 
   constructor(
     private tvSvc: TvTmdbService,
-    public dataTransfer: DataTransferService) {}
+    public dataTransfer: DataTransferService,
+    public userSvc : UserService) {}
 
   ngOnInit() {
     this.tvSvc.getSearchedTvs$()

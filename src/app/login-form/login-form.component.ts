@@ -50,7 +50,7 @@ export class LoginFormComponent {
             localStorage.setItem('userData', JSON.stringify(userData));
 
             if(response.jwt) {
-              this.router.navigate(['/']);
+              this.router.navigate(['/list']);
               this.alertSvc.showAlert('You are connected');
             }
           },

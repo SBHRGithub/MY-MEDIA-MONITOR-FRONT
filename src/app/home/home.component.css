@@ -1,0 +1,13 @@
+div {
+    top: 0px;
+    background-image: url("src/assets/Lord.jpg");
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+}
+
+p {
+    width: 1920px;
+    height: 960px;
+    margin: 0px;
+}

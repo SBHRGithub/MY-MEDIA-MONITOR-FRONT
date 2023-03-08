@@ -6,14 +6,13 @@
                     <h3 class="follow-form-title">Follow my media</h3>
                     <!--follow-form component to request media from Video App base-->
                     <app-follow-form></app-follow-form>
-                    <p class="tip">Better get connecting, right?</p>
                 </div>
             </div>
             <div class="list-column">
                 <div class="list-panel">
                     <div class="media-results">
                         <div class="results">
-                            <div *ngFor="let movie of movies" class="card">
+                            <div [routerLink]="['/list-movie-single-tmdb', movie.externalId]" *ngFor="let movie of movies" class="card">
                                 <div class="wrapper">
                                     <div class="image">
                                         <div class="poster">

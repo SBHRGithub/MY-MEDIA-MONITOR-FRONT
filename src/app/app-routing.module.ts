@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
@@ -11,7 +12,10 @@ import { ListTvMultiTmdbComponent } from './list-tv-multi-tmdb/list-tv-multi-tmd
 
 const routes: Routes = [
   //localhost:4200
-  {path:'', component: ListComponent},
+  {path:'', component: HomeComponent},
+
+  //localhost:4200/list
+  {path:'list', component: ListComponent},
 
   //localhost:4200/list-movie-single-tmdb/123
   {path:'list-movie-single-tmdb/:id', component: ListMovieSingleTMDBComponent},

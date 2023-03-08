@@ -49,3 +49,8 @@ button{
     font-size: 10px;
     border-width: 1.5px;
 }
+
+option{
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 10px;
+}

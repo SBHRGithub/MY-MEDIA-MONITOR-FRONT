@@ -67,7 +67,7 @@ p.tip{
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 10px;
-    margin-inline-end: 0px;
+    margin-inline-end: 10px;
 }
 
 div.list-column{
@@ -119,17 +119,6 @@ div.poster{
     width: 0%;
     height: 0%;
 }
-
-/*div.details{
-    width: 100%;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap:wrap;
-    align-content: center;
-    align-items: center;
-    width: 100%;
-}*/
 
 div.first-line{
     display: flex;
@@ -251,3 +240,8 @@ h2.overview {
     flex-wrap: wrap;
     line-height: 18px;
 }
+div.container{
+    background-image: url("src/assets/Lord.jpg");
+    background-size: cover;
+}
+

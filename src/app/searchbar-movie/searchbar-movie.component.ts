@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MovieTMDBService } from '../services/movie-tmdb.service';
 import { MovieSearchTMDBModel } from '../shared/models/movie-search-tmdb.model';
 import { DataTransferService } from '../services/data-transfer.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class SearchbarMovieComponent {
 
   constructor(
     private movieSvc: MovieTMDBService,
-    public dataTransfer: DataTransferService) {}
+    public dataTransfer: DataTransferService,
+    public userSvc : UserService) {}
 
   ngOnInit() {
     this.movieSvc.getSearchedMovies$()

@@ -1,8 +1,41 @@
 div {
     display: flex;
     position: relative;
-    top: 100px;
+    top: 230px;
+    left: 650px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+label{
+    margin-bottom: 8px;
+    font-size: 19px;
+
+}
+
+input{
+    margin-bottom: 12px;
+    width: 500px
+}
+
+button{
+    max-width: 600px;
+    margin-top: 15px;
+    margin-left: 0px;
+    width: 90px;
+    height: 40px;
+    font-size: 19px;
+    border-width: 1.5px;
+    font-size: 19px;
+}
+
 p.error {
     color: rgb(194 65 65);
 }
+
+

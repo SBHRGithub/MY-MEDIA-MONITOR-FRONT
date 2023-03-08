@@ -33,6 +33,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 /* Material imports for FollowFormComponent Button*/
 import {MatButtonModule} from '@angular/material/button';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatButtonModule} from '@angular/material/button';
     CardFormMovieComponent,
     ListMovieMultiTmdbComponent,
     ListTvMultiTmdbComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

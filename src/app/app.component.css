@@ -8,6 +8,11 @@ div.page{
     left: 0;
 }
 
+div.container-fluid{
+    margin: 0px;
+    padding: 0px;       
+}
+
 header{
     display: flex;
     justify-content: center;
@@ -109,4 +114,8 @@ pre {
 h1 {
     font-family: 'Courgette', cursive;  
     font-size: 20px; 
+}
+
+span{
+    color: #FFE699;
 }

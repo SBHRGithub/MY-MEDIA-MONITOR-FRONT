@@ -1,7 +1,6 @@
-<div class="row justify-content-center">
-    <form *ngIf="userSvc.isAuth()" [formGroup]="registerForm" class="col-12 col-md-6" (submit)="onSubmit()">
-        <h1>REGISTER</h1>
-        <label class="form-label">EMAIL</label>
+<div>
+    <form [formGroup]="registerForm" class="col-12 col-md-6" (submit)="onSubmit()">
+        <label class="form-label">Email</label>
         <input class="form-control" formControlName="email" type="text">
 
         <!-- Mail error-->
@@ -14,7 +13,7 @@
         *ngIf="registerForm.touched && 
         registerForm.controls['email'].errors?.['email']">Please enter a valid email</p>
 
-        <label class="form-label">PASSWORD</label>
+        <label class="form-label">Password</label>
         <input class="form-control" formControlName="password" type="password">
 
         <!-- Password error-->
@@ -22,9 +21,6 @@
         *ngIf="registerForm.controls['password'].dirty && 
               registerForm.touched && 
               registerForm.controls['password'].hasError('required')">Password required</p>
-
-        <div class="d-flex justify-content-right">
-            <button type="submit">Register</button>
-        </div>
+        <button type="submit">Register</button>
     </form>
 </div>

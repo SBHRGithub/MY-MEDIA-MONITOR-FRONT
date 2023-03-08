@@ -25,7 +25,7 @@ export class FollowFormComponent {
   ngOnInit() {
     this.followForm = this.fb.group({
       title:[''],
-      mediaType:[''],
+      mediaType:['movie'],
       viewingStatus:[''],
       myScore:[''],
     });

@@ -1,11 +1,10 @@
-<form [formGroup]="followForm" (submit)="onSubmit()">
+<form *ngIf="userSvc.isAuth()" [formGroup]="followForm" (submit)="onSubmit()">
     <label class="form-label">Title</label>
     <input formControlName="title">
 
     <label class="form-label">Media type</label>
     <select formControlName="mediaType">
-        <option value=""></option>
-        <option value="movie">Movie</option>
+        <option value="movie" >Movie</option>
         <option value="tv">TV Show</option>
     </select>
 

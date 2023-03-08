@@ -3,27 +3,21 @@
         <div class="content">
             <nav class="navbar">
                 <div class="container-fluid">
-                    <a routerLink="" class="navbar-brand-home">MY MEDIA MONITOR</a>
+                    <a routerLink="/list" class="navbar-brand-home">MY MEDIA MONITOR</a>
                     <div class="navbar-right">
                         <ul>
                             <li>
-                                <a routerLink="/login" class="login">Login</a>
+                                <a *ngIf="!userSvc.isAuth()" routerLink="/login" class="login">Login</a>
+                                <a *ngIf="userSvc.isAuth()" (click)="userSvc.logout()" class="logout">Logout</a>
                             </li>
                             <pre>     </pre>
                             <li>
-                                <a routerLink="/register" class="register">Register</a>
+                                <a *ngIf="!userSvc.isAuth()" routerLink="/register" class="register">Register</a>
                             </li>
                         </ul>
 
                     </div>
                 </div>
-<!--            <div class="container-fluid">
-                    <a routerLink="" class="navbar-brand-home">MY MEDIA MONITOR</a>
-                    <div>
-                        <a routerLink="/login" class="login">Login </a>
-                        <a routerLink="/register" class="register">Register</a>
-                    </div>
-                </div>-->
             </nav>
         </div>
     </header>
@@ -37,7 +31,7 @@
 
 <footer>
     <div class="container-fluid" class="footer">
-        <h1>MY MEDIA MONITOR</h1>
+        <h1>MY MEDIA MONITOR <span *ngIf="!userSvc.isAuth()">loves you as you are but definitely better if you get connecting to use it, right?</span></h1>
         <pre>
         What the hell with my videos? Nowadays with proliferation of TV shows and movies, it becomes complicated to know what we have already seen or not. Purpose of this application is to remind us of where we are in our viewings and to remind us of what we have informed to watch 
         later. For this, users will be able to enter a new movie or a new TV show and update status of these elements as they arise. Enjoy!

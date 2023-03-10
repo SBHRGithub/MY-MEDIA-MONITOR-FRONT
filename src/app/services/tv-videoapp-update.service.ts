@@ -32,7 +32,9 @@ export class TvVideoappUpdateService {
       externalId: tv.externalId,
       mediaType: tv.mediaType,
       viewingStatus: cardForm.value.viewingStatus,
-      myScore: cardForm.value.myScore
+      myScore: cardForm.value.myScore,
+      ongoingSeason: cardForm.value.ongoingSeason,
+      ongoingEpisode: cardForm.value.ongoingEpisode
     }
     console.log("Http post for update coming")
     console.log(tvUpdateVideoapp);

@@ -31,6 +31,8 @@ export class ListTvMultiVideoappComponent {
    
     this.tvsFindVideoappModel = this.dataTransfer.getTvsFindVideoappModel();
 
+    console.log(this.tvsFindVideoappModel);
+
     for (let i = 0; i<this.tvsFindVideoappModel.length; i++){
       this.tvsDisplayVideoappModel[i].externalId = this.tvsFindVideoappModel[i].externalId;
       this.tvsDisplayVideoappModel[i].name = this.tvsFindVideoappModel[i].name;

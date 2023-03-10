@@ -50,6 +50,7 @@ export class FollowFormComponent {
 
     if (this.followForm.value.mediaType = "movie"){
       this.movieVideoappFindSvc.find(this.followForm);
+      console.log(this.searchedMovies$);
       if(this.searchedMovies$ == null){
         this.alertSvc.showAlert("Your request has no answer")
       }

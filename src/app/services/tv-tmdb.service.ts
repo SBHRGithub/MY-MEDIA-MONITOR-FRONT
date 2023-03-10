@@ -13,8 +13,7 @@ export class TvTmdbService {
 
   environmenT = environment;
 
-  tvs$ = new BehaviorSubject<TVSearchTMDBModel[]>([]);
-  private tvDetails$ = new BehaviorSubject<TVDetailsTMDBModel | any>({});
+  tvDetails$ = new BehaviorSubject<TVDetailsTMDBModel | any>({});
   searchedTvs$: BehaviorSubject<any> = new BehaviorSubject([]);
 
   constructor(private http:HttpClient) { }
@@ -35,6 +34,7 @@ export class TvTmdbService {
     this.searchedTvs$.next(tvs);
   }
 
+  /*
   getTvsFromApi():void {
 
     let params = new HttpParams()
@@ -53,6 +53,7 @@ export class TvTmdbService {
       this.tvs$.next(allTvs);  
     });
   }
+  */
   
   searchTvsFromApi(userSearch:string): void{
     let params = new HttpParams()

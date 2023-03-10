@@ -13,8 +13,7 @@ export class MovieTMDBService {
 
   environmenT = environment;
 
-  movies$ = new BehaviorSubject<MovieSearchTMDBModel[]>([]);
-  private movieDetails$ = new BehaviorSubject<MovieDetailsTMDBModel | any>({});
+  movieDetails$ = new BehaviorSubject<MovieDetailsTMDBModel | any>({});
   searchedMovies$: BehaviorSubject<any> = new BehaviorSubject([]);
 
 
@@ -36,6 +35,7 @@ export class MovieTMDBService {
     this.searchedMovies$.next(movies);
   }
 
+  /*
   getMoviesFromApi():void {
 
     let params = new HttpParams()
@@ -54,6 +54,7 @@ export class MovieTMDBService {
       this.movies$.next(allMovies);  
     });
   }
+  */
 
   searchMoviesFromApi(userSearch:string): void{
     let params = new HttpParams()

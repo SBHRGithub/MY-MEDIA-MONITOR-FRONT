@@ -21,7 +21,8 @@ export class ListTvMultiTmdbComponent {
 
   constructor(
     private tvSvc:TvTmdbService,
-    public dataTransfer: DataTransferService)  {
+    public dataTransfer: DataTransferService,
+    public dataSvc: DataTransferService)  {
     console.log(this);
   }
 
@@ -58,5 +59,10 @@ export class ListTvMultiTmdbComponent {
     console.log('ngOnDestroy');
     this.subscription.unsubscribe();
     this.tvSvc.setSearchedTvs$([]);
+  }
+
+  onClick(tv: TVDetailsTMDBModel){
+    console.log(tv + " reçu par liste");
+    this.dataSvc.setTv(tv);
   }
 }

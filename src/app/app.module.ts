@@ -19,7 +19,11 @@ import { CardFormTvComponent } from './card-form-tv/card-form-tv.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
-
+import { HomeComponent } from './home/home.component';
+import { ListMovieSingleVideoappComponent } from './list-movie-single-videoapp/list-movie-single-videoapp.component';
+import { ListMovieMultiVideoappComponent } from './list-movie-multi-videoapp/list-movie-multi-videoapp.component';
+import { ListTvSingleVideoappComponent } from './list-tv-single-videoapp/list-tv-single-videoapp.component';
+import { ListTvMultiVideoappComponent } from './list-tv-multi-videoapp/list-tv-multi-videoapp.component';
 
 /* Material import for alert message*/
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -33,7 +37,6 @@ import {MatSelectModule} from '@angular/material/select';
 
 /* Material imports for FollowFormComponent Button*/
 import {MatButtonModule} from '@angular/material/button';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,11 @@ import { HomeComponent } from './home/home.component';
     ListMovieMultiTmdbComponent,
     ListTvMultiTmdbComponent,
     HomeComponent,
+    ListMovieSingleVideoappComponent,
+    ListMovieMultiVideoappComponent,
+    ListTvSingleVideoappComponent,    
+    ListTvMultiVideoappComponent,
+
   ],
   imports: [
     BrowserModule,

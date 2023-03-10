@@ -9,6 +9,10 @@ import { ListMovieSingleTMDBComponent } from './list-movie-single-tmdb/list-movi
 import { ListMovieMultiTmdbComponent } from './list-movie-multi-tmdb/list-movie-multi-tmdb.component';
 import { ListTvSingleTmdbComponent } from './list-tv-single-tmdb/list-tv-single-tmdb.component';
 import { ListTvMultiTmdbComponent } from './list-tv-multi-tmdb/list-tv-multi-tmdb.component';
+import { ListMovieSingleVideoappComponent } from './list-movie-single-videoapp/list-movie-single-videoapp.component';
+import { ListMovieMultiVideoappComponent } from './list-movie-multi-videoapp/list-movie-multi-videoapp.component';
+import { ListTvSingleVideoappComponent } from './list-tv-single-videoapp/list-tv-single-videoapp.component';
+import { ListTvMultiVideoappComponent } from './list-tv-multi-videoapp/list-tv-multi-videoapp.component';
 
 const routes: Routes = [
   //localhost:4200
@@ -28,6 +32,18 @@ const routes: Routes = [
 
   //localhost:4200/list-tv-multi-tmdb
   {path:'list-tv-multi-tmdb', component: ListTvMultiTmdbComponent},
+
+  //localhost:4200/list-movie-single-videoapp
+  {path:'list-movie-single-videoapp', component: ListMovieSingleVideoappComponent},
+
+  //localhost:4200/list-movie-multi-videoapp
+  {path:'list-movie-multi-videoapp', component: ListMovieMultiVideoappComponent},
+  
+  //localhost:4200/list-tv-single-videoapp
+  {path:'list-tv-single-videoapp', component: ListTvSingleVideoappComponent},
+
+  //localhost:4200/list-tv-multi-videoapp
+  {path:'list-tv-multi-videoapp', component: ListTvMultiVideoappComponent},
 
   //localhost:4200/login => display LoginFormComponent
   {path:'login', component: LoginFormComponent},

@@ -1,31 +1,39 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
 import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieTMDBService } from '../services/movie-tmdb.service';
 import { DataTransferService } from '../services/data-transfer.service';
+import { MovieVideoappUpdateService } from '../services/movie-videoapp-update.service';
 
 @Component({
-  selector: 'app-list-movie-single-tmdb',
-  templateUrl: './list-movie-single-tmdb.component.html',
-  styleUrls: ['./list-movie-single-tmdb.component.css']
+  selector: 'app-list-movie-single-videoapp',
+  templateUrl: './list-movie-single-videoapp.component.html',
+  styleUrls: ['./list-movie-single-videoapp.component.css']
 })
-export class ListMovieSingleTMDBComponent {
+export class ListMovieSingleVideoappComponent {
 
-  movie!:MovieDetailsTMDBModel;
-  movieId:number = 0;
+//  movie!:MovieDetailsTMDBModel;
+    movie!:MovieDisplayVideoappModel;
+    movieId:number = 0;
+    movies!: MovieDisplayVideoappModel[]
 
   constructor(
-    private route:ActivatedRoute,
-    private movieSvc:MovieTMDBService,
-    public dataSvc: DataTransferService
-    ) {}
-
+    public route:ActivatedRoute,
+//    public movieSvc:MovieTMDBService,
+    public movieSvc:MovieVideoappUpdateService,
+//    public dataSvc: DataTransferService
+    public dataTransfer: DataTransferService
+  ){}
 
   ngOnInit() {
 
     console.log( this.route.snapshot.params) // {id: 123456}
     this.movieId = this.route.snapshot.params['id'];
 
+    this.movies = this.dataTransfer.getMoviesDisplayVideoappModel();
+
+/*
     this.movieSvc.getMovieDetailsFromApi(this.movieId);
 
     this.movieSvc.getMovieDetails$()
@@ -35,6 +43,7 @@ export class ListMovieSingleTMDBComponent {
         this.movie = movie;
       }
     );
+*/
   }
 
   getImgFullUrl(urlFragment:string):string {
@@ -43,9 +52,15 @@ export class ListMovieSingleTMDBComponent {
   }
 
   onClick(movie: MovieDetailsTMDBModel){
-    console.log("Movie received by onClick() after clicking on card-form movie ");
+    console.log("Movie received by onClick() after clicking on card-form movie");
     console.log(movie);
-
-    this.dataSvc.setMovie(movie);
+    this.dataTransfer.setMovie(movie);
   }
+
+
+
+
+
+
+
 }

@@ -22,8 +22,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
         console.log(request);
 
-        // Insert automaticaly token in header to use API_VIDEOAPP_ENDPOINT_CLIENTFIND 
-        if(request.url.includes(this.environmenT.API_VIDEOAPP_ENDPOINT_CLIENTFIND)) {
+        // Insert automaticaly token in header to use API_VIDEOAPP_MOVIEUPDATE 
+        if(request.url.includes(this.environmenT.API_VIDEOAPP_MOVIEUPDATE)) {
         if(request.method == 'GET'||request.method == 'POST') {
             this.cloneRequest = request
             .clone({headers: request.headers.set('Authorization', 'Bearer '+token)})
@@ -32,6 +32,40 @@ export class TokenInterceptor implements HttpInterceptor {
         else {
             this.cloneRequest = request;
         }
+
+        // Insert automaticaly token in header to use API_VIDEOAPP_TVUPDATE 
+        if(request.url.includes(this.environmenT.API_VIDEOAPP_TVUPDATE)) {
+            if(request.method == 'GET'||request.method == 'POST') {
+                this.cloneRequest = request
+                .clone({headers: request.headers.set('Authorization', 'Bearer '+token)})
+        }
+        }
+        else {
+            this.cloneRequest = request;
+        }        
+
+        // Insert automaticaly token in header to use API_VIDEOAPP_MOVIEFIND 
+        if(request.url.includes(this.environmenT.API_VIDEOAPP_MOVIEFIND)) {
+            if(request.method == 'GET'||request.method == 'POST') {
+                this.cloneRequest = request
+                .clone({headers: request.headers.set('Authorization', 'Bearer '+token)})
+        }
+        }
+        else {
+            this.cloneRequest = request;
+        }        
+
+        // Insert automaticaly token in header to use API_VIDEOAPP_TVFIND 
+        if(request.url.includes(this.environmenT.API_VIDEOAPP_TVFIND)) {
+            if(request.method == 'GET'||request.method == 'POST') {
+                this.cloneRequest = request
+                .clone({headers: request.headers.set('Authorization', 'Bearer '+token)})
+        }
+        }
+        else {
+            this.cloneRequest = request;
+        }        
+
         return next.handle(this.cloneRequest);
     }
 }

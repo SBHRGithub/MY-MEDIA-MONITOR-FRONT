@@ -8,7 +8,10 @@ export const environment = {
   API_KEY_TMDB : 'd4fec862aa80d52ef944b7757bb64c44',
 
   /* API VIDEO APPLICATION BACKEND*/
-  API_VIDEOAPP_ENDPOINT_CLIENTFIND :'http://localhost:8080/client',
+  API_VIDEOAPP_MOVIEUPDATE :'http://localhost:8080/post/movie',
+  API_VIDEOAPP_TVUPDATE :'http://localhost:8080/post/tv',
+  API_VIDEOAPP_MOVIEFIND :'http://localhost:8080/get/movie',
+  API_VIDEOAPP_TVFIND :'http://localhost:8080/get/tv',
 
   /* API IAM*/
   API_IAM_ENDPOINT_REGISTER :'http://localhost:8081/register',

@@ -40,6 +40,8 @@ input, select{
     margin-bottom: 0px;
     height: 19px;
     width: 76px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 9px;
 }
 
 button{
@@ -52,5 +54,5 @@ button{
 
 option{
     font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 10px;
+    font-size: 9px;
 }

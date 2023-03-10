@@ -45,7 +45,7 @@ export class RegisterFormComponent {
             }
           },
           error: (err) => console.log(err)
-      }
+        }
       )
     }
   }

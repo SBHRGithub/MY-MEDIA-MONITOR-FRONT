@@ -1,0 +1,224 @@
+div.column-wrapper{
+    display:flex;
+    align-items: flex-start;
+    width:100%;
+    justify-content: center;
+}
+
+div.content-wrapper{
+    max-width: var(--maxPageWidth);
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top:30px
+}
+
+div.follow-form-column{
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: flex-end;
+    min-width: 260px;
+    width: 260px;
+    display: flex;
+    margin-top: 30px;
+}
+
+div.follow-form-panel{
+    display: block;
+    box-sizing: border-box;
+    min-width: 260px;
+    width: 260px;
+    border:1px solid var(--lightGreyBorder);
+    border-radius: var(--borderRadius);
+    margin: 0px;
+}
+
+h3.follow-form-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    font-weight: 600;
+    padding: 10px;
+    background-color: var(--lightGreyBackground);
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 1.3em;
+    box-sizing: border-box;
+    margin-block-start: 0em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+p.tip{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0;
+    color:var(--tipColor);
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 1em;
+    padding-left: 0;
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 10px;
+    margin-inline-end: 0px;
+}
+
+div.list-column{
+    padding-right: 0;
+    padding-left: 30px;
+    width: calc(100vw - 80px - 268px);
+    max-width: calc(var(--maxPageWidth) - 80px - 268px);
+    display: flex;
+    flex: 0 1 auto;
+}
+
+div.list-panel{
+    width: 100%;
+    display: block;
+    padding: 30px 0;
+}
+
+div.results{
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: flex-start;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+div.card{
+    margin-top: 0;
+    flex-wrap: wrap;
+    width: 100%;
+    display:flex;
+    border-radius: var(--borderRadius);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    border: 1px solid var(--lightGreyBorder);
+}
+
+div.wrapper{
+    display:flex;
+    max-width: calc(100w - 82px);
+}
+
+/*div.image{
+    min-width: 94px;
+    width: 94px;
+    height: 141px;
+    box-sizing: border-box;
+}*/
+
+img{
+    min-width: 94px;
+    width: 94px;
+    height: 141px;
+    box-sizing: border-box;
+}
+
+div.poster{
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkNightBlue);
+}
+
+/*div.details{
+    width: 100%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap:wrap;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+}*/
+
+div.first-line{
+    display: flex;
+    flex-direction: row;
+    margin-left: 0px;
+}
+h2.title{
+    width: 50%;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 0; 
+}
+
+h2.status {
+    width: 100%;
+    height: 16px;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0px;
+}
+
+h2.my-score {
+    width: 100%;
+    height: 16px;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0px;
+}
+
+h2.mediatype {
+    width: 20%;
+    height: 16px;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0px;
+}
+
+h2.genre {
+    width: 20%;
+    height: 16px;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0px;
+}
+
+h2.release-date {
+    width: 90%;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0px;
+    color: var(--dateColor);
+}
+
+h2.vote-average {
+    width: 100%;
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 15px;
+    margin: 0;
+    padding: 0px;
+}
+
+h2.overview {
+    display: flex;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0px;
+    flex-wrap: wrap;
+    line-height: 18px;
+}

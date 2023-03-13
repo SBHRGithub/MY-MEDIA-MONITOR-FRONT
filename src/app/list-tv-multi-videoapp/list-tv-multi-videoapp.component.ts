@@ -14,10 +14,11 @@ export class ListTvMultiVideoappComponent {
   
   tvSearch!: TvDisplayVideoappModel;
   tvSearchId = 0;
-  tvsFindVideoappModel!: TvFindVideoappModel[];
+  tvsFindVideoappModel!:TvFindVideoappModel[];
   tvDetailsTMDBModel!:TVDetailsTMDBModel;
   tvsDetailsTMDBModel!:TVDetailsTMDBModel[];
   tvsDisplayVideoappModel!: TvDisplayVideoappModel [];
+  //tvsDisplayVideoappModel = new TvDisplayVideoappModel (0,"","","","","","",0,0,0,"",0,0,0);
   tv!: TvDisplayVideoappModel;
   tvs!: TvDisplayVideoappModel[];
 
@@ -33,7 +34,10 @@ export class ListTvMultiVideoappComponent {
 
     console.log(this.tvsFindVideoappModel);
 
+   
+
     for (let i = 0; i<this.tvsFindVideoappModel.length; i++){
+
       this.tvsDisplayVideoappModel[i].externalId = this.tvsFindVideoappModel[i].externalId;
       this.tvsDisplayVideoappModel[i].name = this.tvsFindVideoappModel[i].name;
       this.tvsDisplayVideoappModel[i].mediaType = this.tvsFindVideoappModel[i].mediaType;

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject} from 'rxjs';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { MovieVideoappFindService } from '../services/movie-videoapp-find.service';
 import { TvVideoappFindService } from '../services/tv-videoapp-find.service';
@@ -18,8 +17,9 @@ import { Router } from '@angular/router';
 export class FollowFormComponent {
 
   followForm!:FormGroup;
-  searchedMovies$ = new BehaviorSubject<MovieFindVideoappModel[]>([]);
-  searchedTvs$ = new BehaviorSubject<TvFindVideoappModel[]>([]);
+ 
+  searchedTvs!:TvFindVideoappModel[];
+  searchedMovies!:MovieFindVideoappModel[];
   moviesFindVideoappModel!: MovieFindVideoappModel[];
   tvsFindVideoappModel!: TvFindVideoappModel[];
 
@@ -34,51 +34,66 @@ export class FollowFormComponent {
     ) {}
   
   ngOnInit() {
+
     this.followForm = this.fb.group({
       title:[''],
       mediaType:['movie'],
       viewingStatus:[''],
       myScore:[''],
     });
-  
-  
-}
+  }
 
   onSubmit() {
     console.log("Followform value received by onSubmit()");  
     console.log(this.followForm.value);
 
-    if (this.followForm.value.mediaType = "movie"){
-      this.movieVideoappFindSvc.find(this.followForm);
-      console.log(this.searchedMovies$);
-      if(this.searchedMovies$ == null){
-        this.alertSvc.showAlert("Your request has no answer")
-      }
-      else{
-        this.movieVideoappFindSvc.searchedMovies$.subscribe(
-          (moviesArr: MovieFindVideoappModel[]) => {
-            this.moviesFindVideoappModel = moviesArr;
-            this.dataSvc.setMoviesFindVideoappModel(this.moviesFindVideoappModel)
-          }        
-        )
-        this.router.navigate(['/list-movie-multi-videoapp']);
-      }
+    if (this.followForm.value.mediaType == "movie"){
+      console.log("movie detected from follow-form");
+      this.movieVideoappFindSvc.find(this.followForm)
+      .subscribe(
+        {
+          next: (response:any) => {
+              console.log(response);
+              if (this.searchedMovies.length == 0){
+                this.alertSvc.showAlert("Your movie request has no answer");
+              }
+              else{
+                this.dataSvc.setMoviesFindVideoappModel(this.searchedMovies);
+                this.router.navigate(['/list-movie-multi-videoapp']);
+              }          
+            }
+        }        
+      )
     }
 
-    if (this.followForm.value.mediaType = "tv"){
-      this.tvVideoappFindSvc.find(this.followForm);
-      if(this.searchedTvs$ == null){
-        this.alertSvc.showAlert("Your request has no answer")
-      }
-      else{
-        this.tvVideoappFindSvc.searchedTvs$.subscribe(
-          (tvsArr: TvFindVideoappModel[]) => {
-            this.tvsFindVideoappModel = tvsArr;
-            this.dataSvc.setTvsFindVideoappModel(this.tvsFindVideoappModel)
-          }        
-        )
-        this.router.navigate(['/list-tv-multi-videoapp']);
-      }
-    }  
+    if (this.followForm.value.mediaType == "tv"){
+      console.log("tv detected from follow-form");
+      this.tvVideoappFindSvc.find(this.followForm)
+      .subscribe(
+        {
+          next: (response:any) => {           
+            console.log("http.get response");
+            console.log(response);
+
+            console.log("http.get response status");
+            console.log(response.status);
+
+            this.searchedTvs = response;
+            this.dataSvc.getTvsFindVideoappModel();
+
+            console.log("searchedTvs");
+            console.log(this.searchedTvs);
+
+            if (this.searchedTvs.length == 0){
+              this.alertSvc.showAlert("Your tv request has no answer");
+            }
+            else{
+              console.log("Navigate to list-tv-multi-videoapp to come");
+              this.router.navigate(['/list-tv-multi-videoapp']);
+            }
+          }
+        }        
+      )
+    }   
   }
 }

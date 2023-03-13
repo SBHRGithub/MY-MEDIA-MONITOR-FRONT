@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject} from 'rxjs';
+import { Observable,BehaviorSubject} from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from './alert.service';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
 import { environment } from 'src/environments/environment.development';
 
@@ -12,14 +14,21 @@ import { environment } from 'src/environments/environment.development';
 export class MovieVideoappFindService {
 
   environmenT = environment;
+  searchedMovies:MovieFindVideoappModel[]= [];
 
-  searchedMovies$ = new BehaviorSubject<MovieFindVideoappModel[]>([]);
+  private _searchedMovies$: BehaviorSubject<any> = new BehaviorSubject([]);
   userData: any;
+  HttpGetResponse!: Observable<any>;
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http:HttpClient,
+    public alertSvc: AlertService,
+    public router:Router) { }
 
-  find(followForm: FormGroup): void{
-    
+  get searchedMovies$():Observable<MovieFindVideoappModel[]> {
+    return this._searchedMovies$.asObservable();
+  }
+  find(followForm: FormGroup): Observable<any> {
     let userDataInStorage = localStorage.getItem('userData');
     this.userData = userDataInStorage!=null?JSON.parse(userDataInStorage):{};
     
@@ -30,12 +39,16 @@ export class MovieVideoappFindService {
     .set('viewingStatus', followForm.value.viewingStatus)
     .set('myScore', followForm.value.myScore);
 
-    this.http.get(this.environmenT.API_VIDEOAPP_MOVIEFIND, {params})
+    console.log("get to API_VIDEOAPP_MOVIEFIND to come")
+
+    return this.http.get(this.environmenT.API_VIDEOAPP_MOVIEFIND, {params})
     .pipe(
       map((apiResponse:any) => {
+        console.log("API_VIDEOAPP_MOVIEFIND response");
+        console.log(apiResponse);
+        console.log(apiResponse.results);
         return apiResponse.results.map((movieFind:any) => new MovieFindVideoappModel(movieFind))
       })
-    )
-    .subscribe((foundMovies:MovieFindVideoappModel[]) => this.searchedMovies$.next(foundMovies));
+    );      
   }
 }

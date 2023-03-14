@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from './alert.service';
 import { TvTmdbService } from './tv-tmdb.service';
+import { DataTransferService } from './data-transfer.service';
 import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
 import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
 import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
-import { environment } from 'src/environments/environment.development';
 import { TvListVideoappModel } from '../shared/models/tv-list-videoapp.model';
+import { environment } from 'src/environments/environment.development';
 
 
 @Injectable({
@@ -20,6 +20,7 @@ export class TvVideoappFindService {
 
   environmenT = environment;
   userData: any;
+  tv!: TvListVideoappModel;
   tvsFind:TvFindVideoappModel[]= [];
   tvsDisplay: TvDisplayVideoappModel[]= [];
   tvs:TvListVideoappModel[]= [];
@@ -27,7 +28,7 @@ export class TvVideoappFindService {
   constructor(
     private http:HttpClient,
     public alertSvc: AlertService,
-    public dataSvc: DataTransfer,
+    public dataSvc: DataTransferService,
     public tvSvc: TvTmdbService,
     public router:Router) { }
 
@@ -53,34 +54,80 @@ export class TvVideoappFindService {
       {
         next: (response:any) => {           
           this.tvsFind = response;
+          console.log(this.tvsFind);
           if (this.tvsFind.length == 0){
             this.alertSvc.showAlert("Your tv request has no answer");
           }
           else{
+            /*
             this.tvsDisplay = this.tvsFind
             .map((tv:TvFindVideoappModel) => new TvDisplayVideoappModel(tv)
             );
 
-            for (let element of this.tvsDisplay){
+            console.log(this.tvsDisplay);
+            */
+
+            for (let element of this.tvsFind){
+              console.log(element);
               this.tvSvc.getTvDetailsFromApi(element.externalId);
               this.tvSvc.getTvDetails$()
               .subscribe(
-                (tv: TVDetailsTMDBModel) => {
-                  console.log(tv);
-                  element.firstAirDate = tv.firstAirDate;
-                  element.numberOfEpisodes = tv.numberOfEpisodes;
-                  element.numberOfSeasons = tv.numberOfSeasons;
-                  element.overview = tv.overview;
-                  element.posterPath = tv.posterPath;
-                  element.voteAverage = tv.voteAverage;
+                {
+                  next: (response:any) =>{
+                    if(response) {
+                        console.log(response);
+
+                        (tv: TVDetailsTMDBModel) => {
+                            console.log(tv);
+
+                            this.tv.externalId = element.externalId;
+                            this.tv.name = element.name;
+                            this.tv.mediaType = element.mediaType;
+                            this.tv.genre = " ";
+                            this.tv.overview = tv.overview;
+                            this.tv.posterPath = tv.posterPath;
+                            this.tv.firstAirDate = tv.firstAirDate;
+                            this.tv.firstAirDate = tv.firstAirDate;
+                            this.tv.numberOfEpisodes = tv.numberOfEpisodes;
+                            this.tv.numberOfSeasons = tv.numberOfSeasons;
+                            this.tv.voteAverage = tv.voteAverage;
+                            this.tv.viewingStatus = element.viewingStatus;
+                            this.tv.myScore = element.myScore;
+                            this.tv.ongoingSeason = element.ongoingSeason;
+                            this.tv.ongoingEpisode = element.ongoingEpisode;
+
+                            this.tvs.push(this.tv);
+
+                            console.log(this.tvs);
+
+                        
+                            this.dataSvc.setTvsList(this.tvs);
+                            this.router.navigate(['/list-tv-multi-videoapp']);
+                        }                 
+                     }
+                    /*
+                    element.firstAirDate = tv.firstAirDate;
+                    element.numberOfEpisodes = tv.numberOfEpisodes;
+                    element.numberOfSeasons = tv.numberOfSeasons;
+                    element.overview = tv.overview;
+                    element.posterPath = tv.posterPath;
+                    element.voteAverage = tv.voteAverage;
+                    */
+                  }
                 }
               );    
             }
 
-            this.tvs = this.tvsDisplay
-            .map((tv: TvDisplayVideoappModel) => new TvListVideoappModel(tv));
+//            console.log(this.tvsDisplay);
 
-            this.router.navigate(['/list-tv-multi-videoapp']);
+//            this.tvs = this.tvsDisplay
+//            .map((tv: TvDisplayVideoappModel) => new TvListVideoappModel(tv));
+
+//            console.log(this.tvs);
+
+//            this.dataSvc.setTvsList(this.tvs);
+
+//            this.router.navigate(['/list-tv-multi-videoapp']);
           }
         }
       }        

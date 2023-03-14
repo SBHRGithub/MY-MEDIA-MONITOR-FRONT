@@ -1,8 +1,8 @@
 import { Component} from '@angular/core';
 import { TvTmdbService } from '../services/tv-tmdb.service';
-import { TVSearchTMDBModel } from '../shared/models/tv-search-tmdb.model';
-import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
 import { DataTransferService } from '../services/data-transfer.service';
+import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
+import { TVSearchTMDBModel } from '../shared/models/tv-search-tmdb.model';
 
 @Component({
   selector: 'app-list-tv-multi-tmdb',

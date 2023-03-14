@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
 import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
-import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
+import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.model';
 import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
 import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
+import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
 import { TvListVideoappModel } from '../shared/models/tv-list-videoapp.model';
 
 @Injectable({
@@ -20,9 +21,26 @@ export class DataTransferService {
   moviesDisplayVideoappModel!: MovieDisplayVideoappModel[];
   tvsDisplayVideoappModel!: TvDisplayVideoappModel[];
   tvsList: TvListVideoappModel[] = [];
+  moviesList: MovieListVideoappModel[] = [];
 
   constructor() { }
 
+  public getTvsList(): TvListVideoappModel[]{
+    return this.tvsList;
+  }
+
+  public setTvsList(tvsList:TvListVideoappModel[]): void{
+    this.tvsList=tvsList;
+  }
+
+  public getMoviesList(): MovieListVideoappModel[]{
+    return this.moviesList;
+  }
+
+  public setMoviesList(moviesList:MovieListVideoappModel[]): void{
+    this.moviesList=moviesList;
+  }
+  
   public getData(): string{
     return this.data;
   }
@@ -69,13 +87,5 @@ export class DataTransferService {
   
   public setTvsDisplayVideoappModel(tvs: TvDisplayVideoappModel[]): void{
     this.tvsDisplayVideoappModel = tvs;
-  }
-
-  public getTvsList(): TvListVideoappModel[]{
-    return this.tvsList;
-  }
-  
-  public setTvsList(tvs: TvListVideoappModel[]): void{
-    this.tvsList = tvs;
   }
 }

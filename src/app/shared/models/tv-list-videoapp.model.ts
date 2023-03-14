@@ -15,20 +15,20 @@ export class TvListVideoappModel {
     ongoingEpisode: number;
 
 
-    constructor(tvDisplayVideoappModel:any){
-        this.externalId = tvDisplayVideoappModel.externalId;
-        this.name = tvDisplayVideoappModel.name;
+    constructor(tvDisplay:any){
+        this.externalId = tvDisplay.externalId;
+        this.name = tvDisplay.name;
         this.mediaType = 'tv';
         this.genre = "";
-        this.overview = tvDisplayVideoappModel.overview;
-        this.posterPath = tvDisplayVideoappModel.posterPath;
-        this.firstAirDate = tvDisplayVideoappModel.firstAirDate;
-        this.numberOfEpisodes = tvDisplayVideoappModel.numberOfEpisodes;
-        this.numberOfSeasons = tvDisplayVideoappModel.numberOfSeasons;
-        this.voteAverage = tvDisplayVideoappModel.voteAverage;
-        this.viewingStatus = tvDisplayVideoappModel.viewingStatus;
-        this.myScore = tvDisplayVideoappModel.myScore;
-        this.ongoingSeason = tvDisplayVideoappModel.ongoingSeason
-        this.ongoingEpisode = tvDisplayVideoappModel.ongoingEpisode;
+        this.overview = tvDisplay.overview;
+        this.posterPath = tvDisplay.posterPath;
+        this.firstAirDate = tvDisplay.firstAirDate;
+        this.numberOfEpisodes = tvDisplay.numberOfEpisodes;
+        this.numberOfSeasons = tvDisplay.numberOfSeasons;
+        this.voteAverage = tvDisplay.voteAverage;
+        this.viewingStatus = tvDisplay.viewingStatus;
+        this.myScore = tvDisplay.myScore;
+        this.ongoingSeason = tvDisplay.ongoingSeason
+        this.ongoingEpisode = tvDisplay.ongoingEpisode;
     }
 }

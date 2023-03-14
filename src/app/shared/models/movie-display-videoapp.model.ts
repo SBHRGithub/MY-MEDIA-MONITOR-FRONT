@@ -10,27 +10,16 @@ export class MovieDisplayVideoappModel {
     viewingStatus: string;
     myScore: number;
 
-    constructor(
-        externalId: number,
-        title: string,
-        mediaType: string,
-        genre: string,
-        overview: string,
-        posterPath: string,
-        releaseDate: string,
-        voteAverage: number,
-        viewingStatus: string,
-        myScore: number
-    ) {
-        this.externalId = externalId;
-        this.title = title;
-        this.mediaType = 'movie';
-        this.genre = genre;
-        this.overview = overview;
-        this.posterPath = posterPath;
-        this.releaseDate = releaseDate;
-        this.voteAverage = voteAverage;
-        this.viewingStatus = viewingStatus;
-        this.myScore = myScore;
-    } 
+    constructor(movieFind:any){
+        this.externalId = movieFind.externalId;
+        this.title = movieFind.name;
+        this.mediaType = 'tv';
+        this.genre = " ";
+        this.overview = " ";
+        this.posterPath = " ";
+        this.releaseDate = " ";
+        this.voteAverage = 0;
+        this.viewingStatus = movieFind.viewingStatus;
+        this.myScore = movieFind.myScore;
+    }
 }

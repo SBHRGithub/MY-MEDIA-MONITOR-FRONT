@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from './alert.service';
+import { MovieTMDBService } from './movie-tmdb.service';
+import { DataTransferService } from './data-transfer.service';
+import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
+import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
+import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.model';
 import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
@@ -13,13 +17,16 @@ import { environment } from 'src/environments/environment.development';
 export class MovieVideoappFindService {
 
   environmenT = environment;
-  movies:MovieFindVideoappModel[]= [];
   userData: any;
+  moviesFind:MovieFindVideoappModel[]= [];
+  moviesDisplay: MovieDisplayVideoappModel[]= [];
+  movies:MovieListVideoappModel[]= [];
 
   constructor(
     private http:HttpClient,
     public alertSvc: AlertService,
-    public dataSvc: DataTransfer,
+    public dataSvc: DataTransferService,
+    public movieSvc: MovieTMDBService,
     public router:Router) { }
 
   find(followForm: FormGroup): void{
@@ -41,16 +48,39 @@ export class MovieVideoappFindService {
     )
     .subscribe(
       {
-        next: (response:any) => {
-          this.movies = response;                    
-          if (this.movies.length == 0){
-              this.alertSvc.showAlert("Your movie request has no answer");
+        next: (response:any) => {           
+          this.moviesFind = response;
+          if (this.moviesFind.length == 0){
+            this.alertSvc.showAlert("Your movie request has no answer");
           }
           else{
-              this.router.navigate(['/list-movie-multi-videoapp']);
-          }          
+            this.moviesDisplay = this.moviesFind
+            .map((movie:MovieFindVideoappModel) => new MovieDisplayVideoappModel(movie)
+            );
+
+            for (let element of this.moviesDisplay){
+              this.movieSvc.getMovieDetailsFromApi(element.externalId);
+              this.movieSvc.getMovieDetails$()
+              .subscribe(
+                (movie: MovieDetailsTMDBModel) => {
+                  console.log(movie);
+                  element.releaseDate = movie.releaseDate;
+                  element.overview = movie.overview;
+                  element.posterPath = movie.posterPath;
+                  element.voteAverage = movie.voteAverage;
+                }
+              );    
+            }
+
+            this.movies = this.moviesDisplay
+            .map((movie: MovieDisplayVideoappModel) => new MovieListVideoappModel(movie));
+
+            this.dataSvc.setMoviesList(this.movies);
+
+            this.router.navigate(['/list-movie-multi-videoapp']);
+          }
         }
       }        
-    );      
+    );   
   }
 }

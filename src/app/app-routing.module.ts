@@ -34,13 +34,13 @@ const routes: Routes = [
   {path:'list-tv-multi-tmdb', component: ListTvMultiTmdbComponent},
 
   //localhost:4200/list-movie-single-videoapp
-  {path:'list-movie-single-videoapp', component: ListMovieSingleVideoappComponent},
+  {path:'list-movie-single-videoapp/:id', component: ListMovieSingleVideoappComponent},
 
   //localhost:4200/list-movie-multi-videoapp
   {path:'list-movie-multi-videoapp', component: ListMovieMultiVideoappComponent},
   
   //localhost:4200/list-tv-single-videoapp
-  {path:'list-tv-single-videoapp', component: ListTvSingleVideoappComponent},
+  {path:'list-tv-single-videoapp/:id', component: ListTvSingleVideoappComponent},
 
   //localhost:4200/list-tv-multi-videoapp
   {path:'list-tv-multi-videoapp', component: ListTvMultiVideoappComponent},

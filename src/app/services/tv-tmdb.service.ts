@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.development';
 import { TVSearchTMDBModel } from '../shared/models/tv-search-tmdb.model';
 import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
+import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class TvTmdbService {
 
   tvDetails$ = new BehaviorSubject<TVDetailsTMDBModel | any>({});
   searchedTvs$: BehaviorSubject<any> = new BehaviorSubject([]);
+  private _tvDetails$ = new BehaviorSubject<TVDetailsTMDBModel | any>({});
 
   constructor(private http:HttpClient) { }
 
@@ -78,10 +80,14 @@ export class TvTmdbService {
     this.http.get(this.environmenT.API_TMDB_GETTVSHOWSDETAILS + '/' + externalId, {params})
     .pipe(
       map( (apiResponse:any) => new TVDetailsTMDBModel(apiResponse))
-    ) 
-    .subscribe( (tv:TVDetailsTMDBModel) => this.tvDetails$.next(tv));
+    )
+    .subscribe( (tv:TVDetailsTMDBModel) => {
+      console.log(tv);
+      this.tvDetails$.next(tv);
+    });
   }
 
-
-
+  get tvDetail$():Observable<MovieDetailsTMDBModel> {
+    return this._tvDetails$.asObservable()
+  }
 }

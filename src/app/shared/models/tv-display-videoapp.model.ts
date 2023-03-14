@@ -14,35 +14,21 @@ export class TvDisplayVideoappModel {
     ongoingSeason: number;
     ongoingEpisode: number;
 
-    constructor(
-        externalId: number,
-        name: string,
-        mediaType: string,
-        genre: string,
-        overview: string,
-        posterPath: string,
-        firstAirDate: string,
-        numberOfEpisodes: number,
-        numberOfSeasons: number,
-        voteAverage: number,
-        viewingStatus: string,
-        myScore: number,
-        ongoingSeason: number,
-        ongoingEpisode: number
-    ) {
-        this.externalId = externalId;
-        this.name = name;
+
+    constructor(tvFindVideoappModel:any){
+        this.externalId = tvFindVideoappModel.externalId;
+        this.name = tvFindVideoappModel.name;
         this.mediaType = 'tv';
-        this.genre = genre;
-        this.overview = overview;
-        this.posterPath = posterPath;
-        this.firstAirDate = firstAirDate;
-        this.numberOfEpisodes = numberOfEpisodes;
-        this.numberOfSeasons = numberOfSeasons;
-        this.voteAverage = voteAverage;
-        this.viewingStatus = viewingStatus;
-        this.myScore = myScore;
-        this.ongoingSeason = ongoingSeason;
-        this.ongoingEpisode = ongoingEpisode;
+        this.genre = " ";
+        this.overview = " ";
+        this.posterPath = " ";
+        this.firstAirDate = " ";
+        this.numberOfEpisodes = 0;
+        this.numberOfSeasons = 0;
+        this.voteAverage = 0;
+        this.viewingStatus = tvFindVideoappModel.viewingStatus;
+        this.myScore = tvFindVideoappModel.myScore;
+        this.ongoingSeason = 0;
+        this.ongoingEpisode = 0;
     }
 }

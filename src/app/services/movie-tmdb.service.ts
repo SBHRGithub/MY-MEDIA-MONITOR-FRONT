@@ -82,4 +82,12 @@ export class MovieTMDBService {
     ) 
     .subscribe( (movie:MovieDetailsTMDBModel) => this.movieDetails$.next(movie));
   }
+
+  getMovieDetailsFromTmdb(externalId:number): Observable<any> {
+    let params = new HttpParams()
+    .set('api_key', this.environmenT.API_KEY_TMDB)
+    .set('language', 'fr');
+
+    return this.http.get(this.environmenT.API_TMDB_GETMOVIESDETAILS + '/' + externalId, {params});
+  }
 }

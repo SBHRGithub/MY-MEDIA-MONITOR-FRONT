@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLoginModel } from '../shared/models/userlogin.model';
@@ -34,8 +34,10 @@ export class UserService {
         identifier:credentials.email, 
         password: credentials.password 
       };
+//      let contentHeader = new HttpHeaders({ "Content-Type":"application/json" });
       return this.http.post(this.API_USER+'/auth/local', userData);
-//      return this.http.post(this.environmenT.API_IAM_ENDPOINT_LOGIN, userData); // Observable
+//      return this.http.post(this.environmenT.API_IAM_ENDPOINT_LOGIN, userData)
+//, {'headers':contentHeader}); // Observable
     }
 
     logout() {

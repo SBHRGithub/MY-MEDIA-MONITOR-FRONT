@@ -44,56 +44,13 @@ export class FollowFormComponent {
   }
 
   onSubmit() {
-    console.log("Followform value received by onSubmit()");  
-    console.log(this.followForm.value);
 
     if (this.followForm.value.mediaType == "movie"){
-      console.log("movie detected from follow-form");
-      this.movieVideoappFindSvc.find(this.followForm)
-      .subscribe(
-        {
-          next: (response:any) => {
-              console.log(response);
-              if (this.searchedMovies.length == 0){
-                this.alertSvc.showAlert("Your movie request has no answer");
-              }
-              else{
-                this.dataSvc.setMoviesFindVideoappModel(this.searchedMovies);
-                this.router.navigate(['/list-movie-multi-videoapp']);
-              }          
-            }
-        }        
-      )
+      this.movieVideoappFindSvc.find(this.followForm);
     }
 
     if (this.followForm.value.mediaType == "tv"){
-      console.log("tv detected from follow-form");
-      this.tvVideoappFindSvc.find(this.followForm)
-      .subscribe(
-        {
-          next: (response:any) => {           
-            console.log("http.get response");
-            console.log(response);
-
-            console.log("http.get response status");
-            console.log(response.status);
-
-            this.searchedTvs = response;
-            this.dataSvc.getTvsFindVideoappModel();
-
-            console.log("searchedTvs");
-            console.log(this.searchedTvs);
-
-            if (this.searchedTvs.length == 0){
-              this.alertSvc.showAlert("Your tv request has no answer");
-            }
-            else{
-              console.log("Navigate to list-tv-multi-videoapp to come");
-              this.router.navigate(['/list-tv-multi-videoapp']);
-            }
-          }
-        }        
-      )
+      this.tvVideoappFindSvc.find(this.followForm);
     }   
   }
 }

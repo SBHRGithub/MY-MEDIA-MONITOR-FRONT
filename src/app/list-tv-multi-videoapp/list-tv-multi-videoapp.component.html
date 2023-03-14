@@ -15,7 +15,7 @@
                             <div [routerLink]="['/list-tv-single-videoapp', tv.externalId]" *ngFor="let tv of tvs" class="card">
                                 <div class="wrapper">
                                     <div class="image">
-                                        <div class="poster">
+                                        <div *ngIf="isDefined(tv.posterPath)" class="poster">
                                             <img [src]="getImgFullUrl(tv.posterPath)" alt="Picture">
                                         </div>
                                     </div>
@@ -29,15 +29,15 @@
                                         <h2 class="overview">{{tv.overview}}</h2>
                                         <div class="row align-items-start">
                                             <div class="col">
-                                                <h2 class="seasons-number">{{tv.numberOfSeasons}}</h2>
-                                                <h2 class="episodes-number">{{tv.numberOfEpisodes}}</h2>
+                                                <h2 class="seasons-number"></h2>
+                                                <h2 class="episodes-number"></h2>
                                                 <h2 class="vote-average">{{tv.voteAverage | number:'1.0-0'}}<span>/10</span></h2>
                                             </div>
                                             <div class="col">
                                                 <h2 class="status">{{tv.viewingStatus}}</h2>
-                                                <h2 class="my-score">{{tv.myScore}}</h2>
-                                                <h2 class="ongoing-season">{{tv.ongoingSeason}}</h2>
-                                                <h2 class="ongoing-episode">{{tv.ongoingEpisode}}</h2>
+                                                <h2 class="my-score"><span>/My score : </span>{{tv.myScore}}</h2>
+                                                <h2 class="ongoing-season"><span>My season : </span>{{tv.ongoingSeason}}</h2>
+                                                <h2 class="ongoing-episode"><span>My episode</span>{{tv.ongoingEpisode}}</h2>
                                             </div>
                                             <div class="col">
                                                 <div class="card-form">

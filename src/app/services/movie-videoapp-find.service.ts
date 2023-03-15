@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject} from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from './alert.service';
-import { MovieTMDBService } from './movie-tmdb.service';
 import { DataTransferService } from './data-transfer.service';
-import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
-import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
-import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.model';
 import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
@@ -18,15 +15,17 @@ export class MovieVideoappFindService {
 
   environmenT = environment;
   userData: any;
+  movie!: MovieFindVideoappModel;
+  movieFind!: MovieFindVideoappModel;
+  movieFindId =0;
   moviesFind:MovieFindVideoappModel[]= [];
-  moviesDisplay: MovieDisplayVideoappModel[]= [];
-  movies:MovieListVideoappModel[]= [];
+  movies: Array<MovieFindVideoappModel> = [];
+  searchedMovies$: BehaviorSubject<any> = new BehaviorSubject([]);
 
   constructor(
     private http:HttpClient,
     public alertSvc: AlertService,
     public dataSvc: DataTransferService,
-    public movieSvc: MovieTMDBService,
     public router:Router) { }
 
   find(followForm: FormGroup): void{
@@ -46,41 +45,13 @@ export class MovieVideoappFindService {
         return apiResponse.results.map((movie:any) => new MovieFindVideoappModel(movie))
       })
     )
-    .subscribe(
-      {
-        next: (response:any) => {           
-          this.moviesFind = response;
-          if (this.moviesFind.length == 0){
-            this.alertSvc.showAlert("Your movie request has no answer");
-          }
-          else{
-            this.moviesDisplay = this.moviesFind
-            .map((movie:MovieFindVideoappModel) => new MovieDisplayVideoappModel(movie)
-            );
-
-            for (let element of this.moviesDisplay){
-              this.movieSvc.getMovieDetailsFromApi(element.externalId);
-              this.movieSvc.getMovieDetails$()
-              .subscribe(
-                (movie: MovieDetailsTMDBModel) => {
-                  console.log(movie);
-                  element.releaseDate = movie.releaseDate;
-                  element.overview = movie.overview;
-                  element.posterPath = movie.posterPath;
-                  element.voteAverage = movie.voteAverage;
-                }
-              );    
-            }
-
-            this.movies = this.moviesDisplay
-            .map((movie: MovieDisplayVideoappModel) => new MovieListVideoappModel(movie));
-
-            this.dataSvc.setMoviesList(this.movies);
-
-            this.router.navigate(['/list-movie-multi-videoapp']);
-          }
-        }
-      }        
-    );   
+    .subscribe((foundMovies:MovieFindVideoappModel[]) => {
+      this.searchedMovies$.next(foundMovies);
+      console.log(this.searchedMovies$);
+    });
+  }
+  
+  public getSearchedMovies$():Observable<MovieFindVideoappModel[]> {
+    return this.searchedMovies$.asObservable();
   }
 }

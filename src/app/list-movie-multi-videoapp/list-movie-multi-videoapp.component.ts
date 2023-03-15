@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { MovieTMDBService } from '../services/movie-tmdb.service';
 import { DataTransferService } from '../services/data-transfer.service';
+import { MovieVideoappFindService } from '../services/movie-videoapp-find.service';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
-import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
-import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.model';
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-list-movie-multi-videoapp',
   templateUrl: './list-movie-multi-videoapp.component.html',
@@ -11,20 +10,21 @@ import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.mod
 })
 export class ListMovieMultiVideoappComponent {
   
-  movieSearch!: MovieDisplayVideoappModel;
-  movies : MovieListVideoappModel[] = [];
-  moviesDisplayVideoappModel: MovieDisplayVideoappModel [] = [];
-  moviesFindVideoappModel!:MovieFindVideoappModel[];
+  movie!:MovieFindVideoappModel;
+  movies : Array<MovieFindVideoappModel>=[];
+  subscription:any;
+  followForm!: FormGroup;
 
   constructor(
 
-    private movieSvc:MovieTMDBService,
-    public dataSvc: DataTransferService)  {}
+    public dataSvc: DataTransferService,
+    public movieSvc:MovieVideoappFindService) {}
   
   ngOnInit() { 
 
-    this.movies = this.dataSvc.getMoviesList();
-
+    this.movies = this.dataSvc.getMoviesFind();
+    this.followForm = this.dataSvc.getFollowForm();
+    this.movieSvc.find(this.followForm);
   }
 
   getImgFullUrl(urlFragment:string):string {
@@ -34,5 +34,10 @@ export class ListMovieMultiVideoappComponent {
   
   ngOnDestroy() {
     console.log('ngOnDestroy');
+  }
+
+  onClick(movie: MovieFindVideoappModel){
+    console.log(movie + " reçu par liste");
+    this.dataSvc.setMovieFind(movie);
   }
 }

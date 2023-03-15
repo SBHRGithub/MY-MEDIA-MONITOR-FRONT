@@ -19,43 +19,6 @@ export class MovieTMDBService {
 
   constructor(private http:HttpClient) { }
 
-  public getMovieDetails$():Observable<MovieDetailsTMDBModel> {
-    return this.movieDetails$.asObservable();
-  }
-
-  public setMovieDetails$(movie: MovieDetailsTMDBModel): void {
-    this.movieDetails$.next(movie);
-  }
-
-  public getSearchedMovies$():Observable<MovieSearchTMDBModel[]> {
-    return this.searchedMovies$.asObservable();
-  }
-
-  public setSearchedMovies$(movies: MovieSearchTMDBModel[]): void {
-    this.searchedMovies$.next(movies);
-  }
-
-  /*
-  getMoviesFromApi():void {
-
-    let params = new HttpParams()
-    .set('api_key', this.environmenT.API_KEY_TMDB)
-    .set('language', 'fr');
-
-    this.http.get(this.environmenT.API_TMDB_SEARCHMOVIES, {params})
-    .pipe(
-      map( (apiResponse:any) => {
-        return apiResponse.results.map((movie: any) => new MovieSearchTMDBModel(movie))
-      })
-    )
-    .subscribe( (movies:MovieSearchTMDBModel[]) => {
-      let actualMovies = this.movies$.getValue();
-      let allMovies:any = [...actualMovies, ...movies];
-      this.movies$.next(allMovies);  
-    });
-  }
-  */
-
   searchMoviesFromApi(userSearch:string): void{
     let params = new HttpParams()
     .set('api_key', this.environmenT.API_KEY_TMDB)
@@ -83,11 +46,15 @@ export class MovieTMDBService {
     .subscribe( (movie:MovieDetailsTMDBModel) => this.movieDetails$.next(movie));
   }
 
-  getMovieDetailsFromTmdb(externalId:number): Observable<any> {
-    let params = new HttpParams()
-    .set('api_key', this.environmenT.API_KEY_TMDB)
-    .set('language', 'fr');
+  public getMovieDetails$():Observable<MovieDetailsTMDBModel> {
+    return this.movieDetails$.asObservable();
+  }
 
-    return this.http.get(this.environmenT.API_TMDB_GETMOVIESDETAILS + '/' + externalId, {params});
+  public getSearchedMovies$():Observable<MovieSearchTMDBModel[]> {
+    return this.searchedMovies$.asObservable();
+  }
+
+  public setSearchedMovies$(movies: MovieSearchTMDBModel[]): void {
+    this.searchedMovies$.next(movies);
   }
 }

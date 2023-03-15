@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieTMDBService } from '../services/movie-tmdb.service';
 import { DataTransferService } from '../services/data-transfer.service';
+import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
+
 
 @Component({
   selector: 'app-list-movie-single-tmdb',

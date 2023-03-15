@@ -11,7 +11,7 @@ import { TVSearchTMDBModel } from '../shared/models/tv-search-tmdb.model';
 })
 export class ListTvMultiTmdbComponent {
   tv!:TVDetailsTMDBModel;
-  tvId:number = 0;
+  //tvId:number = 0;
   tvs:Array<TVSearchTMDBModel> = [];
   subscription:any;
   tvSearch!: TVSearchTMDBModel;
@@ -21,14 +21,11 @@ export class ListTvMultiTmdbComponent {
 
   constructor(
     private tvSvc:TvTmdbService,
-    public dataTransfer: DataTransferService,
-    public dataSvc: DataTransferService)  {
-    console.log(this);
-  }
+    public dataSvc: DataTransferService)  {}
 
   ngOnInit() { 
    
-    this.query = this.dataTransfer.getData();
+    this.query = this.dataSvc.getData();
     
     this.tvSvc.searchTvsFromApi(this.query);
 
@@ -44,7 +41,7 @@ export class ListTvMultiTmdbComponent {
       .subscribe(
         (tv: TVDetailsTMDBModel) =>{
           this.tv = tv;
-          this.tv.genre = " "
+          this.tv.genre = " ";
         }
       )
     }

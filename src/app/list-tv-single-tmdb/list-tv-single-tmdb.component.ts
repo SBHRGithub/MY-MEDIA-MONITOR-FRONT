@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
 import { TvTmdbService } from '../services/tv-tmdb.service';
 import { DataTransferService } from '../services/data-transfer.service';
+import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
+
+
 
 @Component({
   selector: 'app-list-tv-single-tmdb',

@@ -23,13 +23,13 @@ export class ListMovieMultiTmdbComponent {
   constructor(
 
     private movieSvc:MovieTMDBService,
-    public dataTransfer: DataTransferService)  {
+    public dataSvc: DataTransferService)  {
     console.log(this);
   }
 
   ngOnInit() { 
 
-    this.query = this.dataTransfer.getData();
+    this.query = this.dataSvc.getData();
     
    
     this.movieSvc.searchMoviesFromApi(this.query);
@@ -61,5 +61,10 @@ export class ListMovieMultiTmdbComponent {
     console.log('ngOnDestroy');
     this.subscription.unsubscribe();
     this.movieSvc.setSearchedMovies$([]);
+  }
+
+  onClick(movie: MovieDetailsTMDBModel){
+    console.log(movie + " reçu par liste");
+    this.dataSvc.setMovie(movie);
   }
 }

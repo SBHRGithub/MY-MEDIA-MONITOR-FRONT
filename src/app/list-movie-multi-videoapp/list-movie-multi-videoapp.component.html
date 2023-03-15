@@ -14,22 +14,17 @@
                         <div class="results">
                             <div [routerLink]="['/list-movie-single-videoapp', movie.externalId]" *ngFor="let movie of movies" class="card">
                                 <div class="wrapper">
-                                    <div class="image">
-                                        <div class="poster">
-                                            <img [src]="getImgFullUrl(movie.posterPath)" alt="Picture">
-                                        </div>
-                                    </div>
                                     <div class="container-fluid details">
                                         <div class="first-line">
                                             <h2 class="title">{{ movie.title }}</h2>
-                                            <h2 class="release-date">{{movie.releaseDate | date: 'longDate'}}</h2>
+                                            <h2 class="release-date"></h2>
                                             <h2 class="genre"></h2>
                                             <h2 class="mediatype">Movie</h2>
                                         </div>
-                                        <h2 class="overview">{{movie.overview}}</h2>
+                                        <h2 class="overview"></h2>
                                         <div class="row align-items-start">
                                             <div class="col">
-                                                <h2 class="vote-average">{{movie.voteAverage | number:'1.0-0'}}<span>/10</span></h2>
+                                                <h2 class="vote-average"></h2>
                                             </div>
                                             <div class="col">
                                                 <h2 class="status">{{movie.viewingStatus}}</h2>

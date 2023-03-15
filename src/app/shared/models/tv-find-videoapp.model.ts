@@ -7,13 +7,13 @@ export class TvFindVideoappModel {
   ongoingSeason: number;
   ongoingEpisode: number;
 
-  constructor(movieFromApi:any){
-      this.externalId = movieFromApi.externalId;
-      this.name = movieFromApi.name;
+  constructor(tvFromApi:any){
+      this.externalId = tvFromApi.externalId;
+      this.name = tvFromApi.name;
       this.mediaType = 'tv';
-      this.viewingStatus = movieFromApi.viewingStatus;
-      this.myScore = movieFromApi.myScore;
-      this.ongoingSeason = movieFromApi.ongoingSeason;
-      this.ongoingEpisode = movieFromApi.ongoingEpisode;
+      this.viewingStatus = tvFromApi.viewingStatus;
+      this.myScore = tvFromApi.myScore;
+      this.ongoingSeason = tvFromApi.ongoingSeason;
+      this.ongoingEpisode = tvFromApi.ongoingEpisode;
   } 
 }

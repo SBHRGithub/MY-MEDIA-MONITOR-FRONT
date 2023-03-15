@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
 import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
 import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.model';
 import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
-import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
+import { TVSearchVideoappModel } from '../shared/models/tv-search-videoapp-model';//*Add*
 import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
 import { TvListVideoappModel } from '../shared/models/tv-list-videoapp.model';
+import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,37 +19,28 @@ export class DataTransferService {
   data!: string;
   movie!: MovieDetailsTMDBModel;
   tv!: TVDetailsTMDBModel;
-  moviesFindVideoappModel!: MovieFindVideoappModel[];
-  tvsFindVideoappModel!: TvFindVideoappModel[];
-  moviesDisplayVideoappModel!: MovieDisplayVideoappModel[];
-  tvsDisplayVideoappModel!: TvDisplayVideoappModel[];
-  tvsList: TvListVideoappModel[] = [];
-  moviesList: MovieListVideoappModel[] = [];
+  movieFind!: MovieFindVideoappModel;  
+  moviesFind!: MovieFindVideoappModel[];
+  tvFind!: TvFindVideoappModel;
+  tvsFind!: TvFindVideoappModel[];
+  followForm!: FormGroup;
 
   constructor() { }
 
-  public getTvsList(): TvListVideoappModel[]{
-    return this.tvsList;
-  }
-
-  public setTvsList(tvsList:TvListVideoappModel[]): void{
-    this.tvsList=tvsList;
-  }
-
-  public getMoviesList(): MovieListVideoappModel[]{
-    return this.moviesList;
-  }
-
-  public setMoviesList(moviesList:MovieListVideoappModel[]): void{
-    this.moviesList=moviesList;
-  }
-  
   public getData(): string{
     return this.data;
   }
 
   public setData(data:string): void{
     this.data=data;
+  }
+
+  public getFollowForm(): FormGroup {
+    return this.followForm;
+  }
+
+  public setFollowForm(followForm:FormGroup): void{
+    this.followForm=followForm;
   }
 
   public getMovie(): MovieDetailsTMDBModel{
@@ -65,27 +59,35 @@ export class DataTransferService {
     this.tv=tv;
   }
 
-  public getMoviesFindVideoappModel(): MovieFindVideoappModel[]{
-    return this.moviesFindVideoappModel;
+  public getMovieFind(): MovieFindVideoappModel{
+    return this.movieFind;
   }
   
-  public setMoviesFindVideoappModel(movies: MovieFindVideoappModel[]): void{
-    this.moviesFindVideoappModel = movies;
-  }
-  
-  public getMoviesDisplayVideoappModel(): MovieDisplayVideoappModel[]{
-    return this.moviesDisplayVideoappModel;
-  }
-  
-  public setMoviesDisplayVideoappModel(movies: MovieDisplayVideoappModel[]): void{
-    this.moviesDisplayVideoappModel = movies;
+  public setMovieFind(movie: MovieFindVideoappModel): void{
+    this.movieFind = movie;
   }
 
-  public getTvsDisplayVideoappModel(): TvDisplayVideoappModel[]{
-    return this.tvsDisplayVideoappModel;
+  public getMoviesFind(): MovieFindVideoappModel[]{
+    return this.moviesFind;
   }
   
-  public setTvsDisplayVideoappModel(tvs: TvDisplayVideoappModel[]): void{
-    this.tvsDisplayVideoappModel = tvs;
+  public setMoviesFind(movies: MovieFindVideoappModel[]): void{
+    this.moviesFind = movies;
+  }
+
+  public getTvFind(): TvFindVideoappModel{
+    return this.tvFind;
+  }
+  
+  public setTvFind(tv: TvFindVideoappModel): void{
+    this.tvFind = tv;
+  }
+
+  public getTvsFind(): TvFindVideoappModel[]{
+    return this.tvsFind;
+  }
+  
+  public setTvsFind(tvs: TvFindVideoappModel[]): void{
+    this.tvsFind = tvs;
   }
 }

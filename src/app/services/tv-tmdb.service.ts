@@ -19,44 +19,7 @@ export class TvTmdbService {
   private _tvDetails$ = new BehaviorSubject<TVDetailsTMDBModel | any>({});
 
   constructor(private http:HttpClient) { }
-
-  public getTvDetails$():Observable<TVDetailsTMDBModel> {
-    return this.tvDetails$.asObservable();
-  }
-
-  public setTvDetails$(tv: TVDetailsTMDBModel): void {
-    this.tvDetails$.next(tv);
-  }
-
-  public getSearchedTvs$():Observable<TVSearchTMDBModel[]> {
-    return this.searchedTvs$.asObservable();
-  }
-
-  public setSearchedTvs$(tvs: TVSearchTMDBModel[]): void {
-    this.searchedTvs$.next(tvs);
-  }
-
-  /*
-  getTvsFromApi():void {
-
-    let params = new HttpParams()
-    .set('api_key', this.environmenT.API_KEY_TMDB)
-    .set('language', 'fr');
-
-    this.http.get(this.environmenT.API_TMDB_SEARCHTVSHOWS, {params})
-    .pipe(
-      map( (apiResponse:any) => {
-        return apiResponse.results.map((tv: any) => new TVSearchTMDBModel(tv))
-      })
-    )
-    .subscribe( (tvs:TVSearchTMDBModel[]) => {
-      let actualTvs = this.tvs$.getValue();
-      let allTvs:any = [...actualTvs, ...tvs];
-      this.tvs$.next(allTvs);  
-    });
-  }
-  */
-  
+ 
   searchTvsFromApi(userSearch:string): void{
     let params = new HttpParams()
     .set('api_key', this.environmenT.API_KEY_TMDB)
@@ -87,7 +50,15 @@ export class TvTmdbService {
     });
   }
 
-  get tvDetail$():Observable<MovieDetailsTMDBModel> {
-    return this._tvDetails$.asObservable()
+  public getTvDetails$():Observable<TVDetailsTMDBModel> {
+    return this.tvDetails$.asObservable();
+  }
+
+  public getSearchedTvs$():Observable<TVSearchTMDBModel[]> {
+    return this.searchedTvs$.asObservable();
+  }
+
+  public setSearchedTvs$(tvs: TVSearchTMDBModel[]): void {
+    this.searchedTvs$.next(tvs);
   }
 }

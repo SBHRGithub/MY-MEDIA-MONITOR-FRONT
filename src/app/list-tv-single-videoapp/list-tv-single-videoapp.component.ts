@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
-import { TvTmdbService } from '../services/tv-tmdb.service';
 import { DataTransferService } from '../services/data-transfer.service';
-import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
+import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
+
+
 
 @Component({
   selector: 'app-list-tv-single-videoapp',
@@ -12,35 +12,21 @@ import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.mod
 })
 export class ListTvSingleVideoappComponent {
 
-  tv!:TvDisplayVideoappModel;
+  tv!:TvFindVideoappModel;
   tvId:number = 0;
-  tvs!: TvDisplayVideoappModel[];
+
 
   constructor(
     public route:ActivatedRoute,
-    public tvSvc:TvTmdbService,
-//    public dataSvc: DataTransferService
-    public dataTransfer: DataTransferService
+    public dataSvc: DataTransferService
     ) {}
 
     ngOnInit() {
 
       console.log( this.route.snapshot.params) // {id: 123456}
       this.tvId = this.route.snapshot.params['id'];
-
-      this.tvs = this.dataTransfer.getTvsDisplayVideoappModel();
-
-/*
-      this.tvSvc.getTvDetailsFromApi(this.tvId);
-  
-      this.tvSvc.getTvDetails$()
-      .subscribe(
-        (tv:TVDetailsTMDBModel) => {
-          console.log(tv);
-          this.tv = tv;
-        }
-      );
-*/      
+      
+      this.tv= this.dataSvc.getTvFind();
     }
 
     getImgFullUrl(urlFragment:string):string {
@@ -48,10 +34,8 @@ export class ListTvSingleVideoappComponent {
       return 'https://image.tmdb.org/t/p/w500'+ urlFragment;
     }
 
-    onClick(tv: TVDetailsTMDBModel){
-      console.log("Tv received by onClick() after clicking on card-form tv ");
-      console.log(tv);
+    onClick(tv: TvFindVideoappModel){
   
-      this.dataTransfer.setTv(tv);
+      this.dataSvc.setTvFind(tv);
     }
 }

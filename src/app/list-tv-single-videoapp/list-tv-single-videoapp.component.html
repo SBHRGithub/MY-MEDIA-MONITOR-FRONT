@@ -15,21 +15,18 @@
                             <div class="card">
                                 <div class="wrapper">
                                     <div class="image">
-                                        <div class="poster">
-                                            <img [src]="getImgFullUrl(tv.posterPath)" alt="Picture">
-                                        </div>
                                     </div>
                                     <div class="container-fluid details">
                                         <div class="first-line">
                                             <h2 class="title">{{ tv.name }}</h2>
-                                            <h2 class="release-date">{{tv.firstAirDate | date: 'longDate'}}</h2>
-                                            <h2 class="genre">{{ tv.genre }}</h2>
+                                            <h2 class="release-date"></h2>
+                                            <h2 class="genre"></h2>
                                             <h2 class="mediatype">TV</h2>
                                         </div>
-                                        <h2 class="overview">{{tv.overview}}</h2>
+                                        <h2 class="overview"></h2>
                                         <div class="row align-items-start">
                                             <div class="col">
-                                                <h2 class="vote-average">{{tv.voteAverage | number:'1.0-0'}}<span>/10</span></h2>
+                                                <h2 class="vote-average"></h2>
                                             </div>
                                             <div class="col">
                                                 <h2 class="status">{{tv.viewingStatus}}</h2>

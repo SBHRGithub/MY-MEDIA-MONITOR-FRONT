@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TvTmdbService } from '../services/tv-tmdb.service';
+import { FormGroup } from '@angular/forms';
 import { DataTransferService } from '../services/data-transfer.service';
+import { TvVideoappFindService } from '../services/tv-videoapp-find.service';
 import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
-import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
-import { TvListVideoappModel } from '../shared/models/tv-list-videoapp.model';
+
 
 @Component({
   selector: 'app-list-tv-multi-videoapp',
@@ -12,19 +12,25 @@ import { TvListVideoappModel } from '../shared/models/tv-list-videoapp.model';
 })
 export class ListTvMultiVideoappComponent {
   
-  tvSearch!: TvDisplayVideoappModel;
-  tvs : TvListVideoappModel[] = [];
-  tvsDisplayVideoappModel: TvDisplayVideoappModel [] = [];
-  tvsFindVideoappModel!:TvFindVideoappModel[];
+  tv!:TvFindVideoappModel;
+  tvs:Array<TvFindVideoappModel> = [];
+  subscription:any;
+  followForm!: FormGroup;
 
   constructor(
-    private tvSvc:TvTmdbService,
-    public dataSvc: DataTransferService)  {}
+    public dataSvc: DataTransferService,
+    public tvSvcFind: TvVideoappFindService)  {}
 
   ngOnInit() { 
     
-    this.tvs = this.dataSvc.getTvsList();
-    
+      this.tvs = this.dataSvc.getTvsFind();
+      this.followForm = this.dataSvc.getFollowForm();
+      this.tvSvcFind.find(this.followForm);
+
+      this.subscription = this.tvSvcFind.searchedTvs$
+      .subscribe( (tvsArr:TvFindVideoappModel[]) => {
+        this.tvs = tvsArr;
+    });
   }
 
   getImgFullUrl(urlFragment:string):string {
@@ -34,5 +40,11 @@ export class ListTvMultiVideoappComponent {
   
   ngOnDestroy() {
     console.log('ngOnDestroy');
+    this.subscription.unsubscribe();
+  }
+
+  onClick(tv: TvFindVideoappModel){
+    console.log(tv + " reçu par liste");
+    this.dataSvc.setTvFind(tv);
   }
 }

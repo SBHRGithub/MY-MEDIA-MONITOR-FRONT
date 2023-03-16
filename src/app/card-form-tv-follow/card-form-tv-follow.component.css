@@ -1,0 +1,75 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+div.first-block{
+    display: flex;
+    flex-direction: row;
+}
+
+div.first-block-first{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+div.first-block-second{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+div.first-block-third{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+div.second-block{
+    display: flex;
+    flex-direction: row;
+}
+
+div.second-block-first{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+div.second-block-second{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+label{
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 9px;
+}
+
+input, select{
+    margin-bottom: 0px;
+    height: 19px;
+    width: 76px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 9px;
+}
+
+button{
+    max-width: 600px;
+    margin-top: 20px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 10px;
+    border-width: 1.5px;
+}
+
+option{
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 9px;
+}

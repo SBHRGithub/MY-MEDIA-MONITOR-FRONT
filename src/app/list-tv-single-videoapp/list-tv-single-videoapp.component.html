@@ -14,8 +14,6 @@
                         <div class="results">
                             <div class="card">
                                 <div class="wrapper">
-                                    <div class="image">
-                                    </div>
                                     <div class="container-fluid details">
                                         <div class="first-line">
                                             <h2 class="title">{{ tv.name }}</h2>
@@ -31,10 +29,12 @@
                                             <div class="col">
                                                 <h2 class="status">{{tv.viewingStatus}}</h2>
                                                 <h2 class="my-score">{{tv.myScore}}</h2>
+                                                <h2 class="ongoing-season"><span>Season : </span>{{tv.ongoingSeason}}</h2>
+                                                <h2 class="ongoing-episode"><span>Episode : </span>{{tv.ongoingEpisode}}</h2>                                                
                                             </div>
                                             <div class="col">
                                                 <div (click)="onClick(tv)" class="card-form">
-                                                    <app-card-form-tv></app-card-form-tv>
+                                                    <app-card-form-tv-follow></app-card-form-tv-follow>
                                                 </div>
                                             </div>
                                         </div>

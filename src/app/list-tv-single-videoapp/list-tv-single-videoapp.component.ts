@@ -27,6 +27,7 @@ export class ListTvSingleVideoappComponent {
       this.tvId = this.route.snapshot.params['id'];
       
       this.tv= this.dataSvc.getTvFind();
+      console.log(this.tv)
     }
 
     getImgFullUrl(urlFragment:string):string {

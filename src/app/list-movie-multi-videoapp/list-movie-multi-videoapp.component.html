@@ -12,7 +12,7 @@
                 <div class="list-panel">
                     <div class="media-results">
                         <div class="results">
-                            <div [routerLink]="['/list-movie-single-videoapp', movie.externalId]" *ngFor="let movie of movies" class="card">
+                            <div (click)="onClick(movie)" [routerLink]="['/list-movie-single-videoapp', movie.externalId]" *ngFor="let movie of movies" class="card">
                                 <div class="wrapper">
                                     <div class="container-fluid details">
                                         <div class="first-line">
@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="col">
                                                 <h2 class="status">{{movie.viewingStatus}}</h2>
-                                                <h2 class="my-score">{{movie.myScore}}</h2>
+                                                <h2 class="my-score">{{movie.myScore}}</h2>               
                                             </div>
                                             <div class="col">
                                                 <div class="card-form">

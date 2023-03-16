@@ -23,6 +23,7 @@ export class ListMovieSingleVideoappComponent {
     this.movieId = this.route.snapshot.params['id'];
 
     this.movie = this.dataSvc.getMovieFind();
+    console.log(this.movie)
   }
 
   getImgFullUrl(urlFragment:string):string {
@@ -31,8 +32,7 @@ export class ListMovieSingleVideoappComponent {
   }
 
   onClick(movie: MovieFindVideoappModel){
-    console.log("Movie received by onClick() after clicking on card-form movie");
-    console.log(movie);
+
     this.dataSvc.setMovieFind(movie);
   }
 

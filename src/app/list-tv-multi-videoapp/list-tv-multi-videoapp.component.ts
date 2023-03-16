@@ -44,7 +44,7 @@ export class ListTvMultiVideoappComponent {
   }
 
   onClick(tv: TvFindVideoappModel){
-    console.log(tv + " reçu par liste");
+    console.log(tv);
     this.dataSvc.setTvFind(tv);
   }
 }

@@ -37,6 +37,8 @@ import {MatSelectModule} from '@angular/material/select';
 
 /* Material imports for FollowFormComponent Button*/
 import {MatButtonModule} from '@angular/material/button';
+import { CardFormTvFollowComponent } from './card-form-tv-follow/card-form-tv-follow.component';
+import { CardFormMovieFollowComponent } from './card-form-movie-follow/card-form-movie-follow.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,7 @@ import {MatButtonModule} from '@angular/material/button';
     ListMovieSingleVideoappComponent,
     ListMovieMultiVideoappComponent,
     ListTvSingleVideoappComponent,    
-    ListTvMultiVideoappComponent,
+    ListTvMultiVideoappComponent, CardFormTvFollowComponent, CardFormMovieFollowComponent,
 
   ],
   imports: [

@@ -2,12 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { MovieDetailsTMDBModel } from '../shared/models/movie-details-tmdb.model';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
-import { MovieDisplayVideoappModel } from '../shared/models/movie-display-videoapp.model';
-import { MovieListVideoappModel } from '../shared/models/movie-list-videoapp.model';
 import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
-import { TVSearchVideoappModel } from '../shared/models/tv-search-videoapp-model';//*Add*
-import { TvDisplayVideoappModel } from '../shared/models/tv-display-videoapp.model';
-import { TvListVideoappModel } from '../shared/models/tv-list-videoapp.model';
 import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';
 
 

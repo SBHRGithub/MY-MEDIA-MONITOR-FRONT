@@ -23,16 +23,14 @@ export class CardFormMovieComponent {
     private router:Router,
     private alertSvc: AlertService,
     public dataSvc: DataTransferService,
-    public movieVideoappUpdateSvc: MovieVideoappUpdateService,
-
-    ) {}
+    public movieVideoappUpdateSvc: MovieVideoappUpdateService,) {}
 
   ngOnInit() {
     this.cardForm = this.fb.group({
       viewingStatus:[''],
       myScore:[''],
     });
-}
+  }
 
   onSubmit() {
     console.log("Cardform value received by onSubmit()");

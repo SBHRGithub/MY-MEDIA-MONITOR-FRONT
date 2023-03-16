@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DataTransferService } from '../services/data-transfer.service';
 import { MovieVideoappFindService } from '../services/movie-videoapp-find.service';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
-import { FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-list-movie-multi-videoapp',
   templateUrl: './list-movie-multi-videoapp.component.html',
@@ -34,10 +35,11 @@ export class ListMovieMultiVideoappComponent {
   
   ngOnDestroy() {
     console.log('ngOnDestroy');
+    this.subscription.unsubscribe();
   }
 
   onClick(movie: MovieFindVideoappModel){
-    console.log(movie + " reçu par liste");
+    console.log(movie);
     this.dataSvc.setMovieFind(movie);
   }
 }

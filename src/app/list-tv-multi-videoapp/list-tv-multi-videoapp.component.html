@@ -12,7 +12,7 @@
                 <div class="list-panel">
                     <div class="media-results">
                         <div class="results">
-                            <div [routerLink]="['/list-tv-single-videoapp', tv.externalId]" *ngFor="let tv of tvs" class="card">
+                            <div (click)="onClick(tv)" [routerLink]="['/list-tv-single-videoapp', tv.externalId]" *ngFor="let tv of tvs" class="card">
                                 <div class="wrapper">
                                     <div class="container-fluid details">
                                         <div class="first-line">

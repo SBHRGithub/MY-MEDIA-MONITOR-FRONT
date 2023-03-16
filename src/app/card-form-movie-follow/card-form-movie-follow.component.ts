@@ -3,25 +3,25 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataTransferService } from '../services/data-transfer.service';
 import { AlertService } from '../services/alert.service';
-import { TvVideoappUpdateService } from '../services/tv-videoapp-update.service';
-import { TVDetailsTMDBModel } from '../shared/models/tv-details-tmdb.model';
+import { MovieVideoappUpdateService } from '../services/movie-videoapp-update.service';
+import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
 
 @Component({
-  selector: 'app-card-form-tv',
-  templateUrl: './card-form-tv.component.html',
-  styleUrls: ['./card-form-tv.component.css']
+  selector: 'app-card-form-movie-follow',
+  templateUrl: './card-form-movie-follow.component.html',
+  styleUrls: ['./card-form-movie-follow.component.css']
 })
-export class CardFormTvComponent {
-  
+export class CardFormMovieFollowComponent {
+
   cardForm!:FormGroup;
-  tv!: TVDetailsTMDBModel;
+  movie!: MovieFindVideoappModel;
   response: any;
 
   constructor(
     private fb:FormBuilder,
-    private router:Router, 
+    private router:Router,
     public dataSvc: DataTransferService,
-    public tvVideoappUpdateSvc: TvVideoappUpdateService,
+    public movieVideoappUpdateSvc: MovieVideoappUpdateService,
     private alertSvc: AlertService
     ) {}
 
@@ -29,8 +29,6 @@ export class CardFormTvComponent {
     this.cardForm = this.fb.group({
       viewingStatus:[''],
       myScore:[''],
-      ongoingSeason:[''],
-      ongoingEpisode:[''],
     });
   }
 
@@ -38,12 +36,12 @@ export class CardFormTvComponent {
     console.log("Cardform value received by onSubmit()");
     console.log(this.cardForm.value);
 
-    this.tv = this.dataSvc.getTv();
+    this.movie = this.dataSvc.getMovieFind();
 
-    console.log("Tv received from DataTranferService");
-    console.log(this.tv);
+    console.log("Movie received from DataTranferService");
+    console.log(this.movie);
 
-    this.tvVideoappUpdateSvc.update(this.tv,this.cardForm)
+    this.movieVideoappUpdateSvc.updateFollow(this.movie,this.cardForm)
     .subscribe(
       {
         next: (response: any) => {
@@ -52,14 +50,14 @@ export class CardFormTvComponent {
 
           if((response.status=200)||(response.status=201)) {
             this.router.navigate(['/list']);
-            this.alertSvc.showAlert('TV Show registered');
+            this.alertSvc.showAlert('Movie registered');
           }
           else {
-            this.alertSvc.showAlert('Error : TV Show not registered');
+            this.alertSvc.showAlert('Error : movie not registered');
           }            
         },
         error: (err) => {
-          this.alertSvc.showAlert('Error : TV Show not registered');
+          this.alertSvc.showAlert('Error : movie not registered');
           console.log(err)
         }
       }

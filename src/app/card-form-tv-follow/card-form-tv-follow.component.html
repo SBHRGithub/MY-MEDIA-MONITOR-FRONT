@@ -1,0 +1,43 @@
+<form [formGroup]="cardForm" (submit)="onSubmit()">
+    <div class="first-block">
+        <div class="first-block-first">
+            <label class="form-label">Status</label>
+            <select formControlName="viewingStatus">
+                <option value=""></option>
+                <option value="Not seen">Not seen</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Viewed">Viewed</option>
+                <option value="To see">To see</option>
+                <option value="Unfollow">Unfollow</option>
+            </select>
+        </div>
+
+        <div class="first-block-second">
+            <label class="form-label">Score</label>
+            <select formControlName="myScore">
+                <option value=""></option>
+                <option value="0">Shitty</option>
+                <option value="1">Bad</option>
+                <option value="2">Tolerable</option>
+                <option value="3">Ordinary</option>
+                <option value="4">Good</option>
+                <option value="5">Very good</option>
+                <option value="6">Not rated</option>
+            </select>
+        </div>
+        <div class="first-block-third">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="second-block">
+        <div class="second-block-first">
+            <label class="form-label">Season</label>
+            <input formControlName="ongoingSeason">
+        </div>
+        <div class="second-block-second">
+            <label class="form-label">Episode</label>
+            <input formControlName="ongoingEpisode">
+        </div>
+    </div>
+</form>

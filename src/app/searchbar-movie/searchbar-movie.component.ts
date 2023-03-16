@@ -34,7 +34,7 @@ export class SearchbarMovieComponent {
       this.movieSvc.setSearchedMovies$([]);
     }
     else {
-      if(userSearch.length>4){
+      if(userSearch.length>2){
       this.movieSvc.searchMoviesFromApi(userSearch);
 
       }

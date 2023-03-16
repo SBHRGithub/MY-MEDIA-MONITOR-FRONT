@@ -33,7 +33,7 @@ export class SearchbarTvComponent {
       this.tvSvc.setSearchedTvs$([]);
     }
     else {
-      if(userSearch.length>4){
+      if(userSearch.length>2){
       this.tvSvc.searchTvsFromApi(userSearch);
       }
     }

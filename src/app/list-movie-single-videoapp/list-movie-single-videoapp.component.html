@@ -17,19 +17,11 @@
                                     <div class="container-fluid details">
                                         <div class="first-line">
                                             <h2 class="title">{{ movie.title }}</h2>
-                                            <h2 class="release-date"></h2>
-                                            <h2 class="genre"></h2>
+                                            <h2 class="status"><span><pre>Status : </pre></span>{{movie.viewingStatus}}</h2>                                                                                     
+                                            <h2 class="my-score"><span><pre>My score : </pre></span>{{movie.myScore}}<span>/5</span></h2>
                                             <h2 class="mediatype">Movie</h2>
                                         </div>
-                                        <h2 class="overview"></h2>
                                         <div class="row align-items-start">
-                                            <div class="col">
-                                                <h2 class="vote-average"></h2>
-                                            </div>
-                                            <div class="col">
-                                                <h2 class="status">{{movie.viewingStatus}}</h2>
-                                                <h2 class="my-score">{{movie.myScore}}</h2>
-                                            </div>
                                             <div class="col">
                                                 <div (click)="onClick(movie)" class="card-form">
                                                     <app-card-form-movie-follow></app-card-form-movie-follow>
@@ -45,4 +37,6 @@
         </div>
     </div>
 </div>
+
+
 

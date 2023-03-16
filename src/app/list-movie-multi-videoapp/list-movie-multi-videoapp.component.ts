@@ -19,13 +19,18 @@ export class ListMovieMultiVideoappComponent {
   constructor(
 
     public dataSvc: DataTransferService,
-    public movieSvc:MovieVideoappFindService) {}
+    public movieSvcFind:MovieVideoappFindService) {}
   
   ngOnInit() { 
 
     this.movies = this.dataSvc.getMoviesFind();
     this.followForm = this.dataSvc.getFollowForm();
-    this.movieSvc.find(this.followForm);
+    this.movieSvcFind.find(this.followForm);
+
+    this.subscription = this.movieSvcFind.searchedMovies$
+      .subscribe( (tvsArr:MovieFindVideoappModel[]) => {
+        this.movies = tvsArr;
+    });
   }
 
   getImgFullUrl(urlFragment:string):string {

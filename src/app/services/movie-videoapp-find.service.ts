@@ -8,6 +8,7 @@ import { AlertService } from './alert.service';
 import { DataTransferService } from './data-transfer.service';
 import { MovieFindVideoappModel } from '../shared/models/movie-find-videoapp.model';
 import { environment } from 'src/environments/environment.development';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +30,7 @@ export class MovieVideoappFindService {
     public router:Router) { }
 
   find(followForm: FormGroup): void{
+
     let userDataInStorage = localStorage.getItem('userData');
     this.userData = userDataInStorage!=null?JSON.parse(userDataInStorage):{};
     

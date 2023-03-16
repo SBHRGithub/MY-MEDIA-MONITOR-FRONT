@@ -30,7 +30,7 @@ export class ListTvMultiVideoappComponent {
       this.subscription = this.tvSvcFind.searchedTvs$
       .subscribe( (tvsArr:TvFindVideoappModel[]) => {
         this.tvs = tvsArr;
-    });
+      });
   }
 
   getImgFullUrl(urlFragment:string):string {

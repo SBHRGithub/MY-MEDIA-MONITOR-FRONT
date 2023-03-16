@@ -9,7 +9,6 @@ import { DataTransferService } from './data-transfer.service';
 import { TvFindVideoappModel } from '../shared/models/tv-find-videoapp.model';//*Add*
 import { environment } from 'src/environments/environment.development';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +28,6 @@ export class TvVideoappFindService {
     public alertSvc: AlertService,
     public dataSvc: DataTransferService,
     public router:Router) { }
-
 
   find(followForm: FormGroup): void{
 

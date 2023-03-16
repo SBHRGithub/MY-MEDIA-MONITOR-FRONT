@@ -41,15 +41,17 @@ export class LoginFormComponent {
             console.log( response);
   
             let userData = {
-              id: response.user.id,
-              token: response.jwt, 
-              email : response.user.email,
-              username : response.user.username,
+//xx              id: response.user.id,
+//xx              token: response.jwt, 
+//xx              email : response.user.email,
+//xx              username : response.user.username,
+              token: response.token,
+              email: response.email
             };
-            localStorage.setItem('token', response.jwt);
+            localStorage.setItem('token', response.token);
             localStorage.setItem('userData', JSON.stringify(userData));
 
-            if(response.jwt) {
+            if(response.token) {
               this.router.navigate(['/list']);
               this.alertSvc.showAlert('You are connected');
             }

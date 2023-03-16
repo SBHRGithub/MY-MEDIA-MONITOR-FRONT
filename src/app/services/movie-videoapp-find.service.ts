@@ -48,6 +48,9 @@ export class MovieVideoappFindService {
       })
     )
     .subscribe((foundMovies:MovieFindVideoappModel[]) => {
+      if (foundMovies.length==0){
+        this.alertSvc.showAlert('No such movies, buddy');
+      };
       this.searchedMovies$.next(foundMovies);
       console.log(this.searchedMovies$);
     });

@@ -48,6 +48,9 @@ export class TvVideoappFindService {
       })
     )
     .subscribe((foundTvs:TvFindVideoappModel[]) => {
+      if (foundTvs.length==0){
+        this.alertSvc.showAlert('No such TV Shows, buddy');
+      };
       this.searchedTvs$.next(foundTvs);
       console.log(this.searchedTvs$);
     });                 

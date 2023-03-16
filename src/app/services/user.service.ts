@@ -31,12 +31,13 @@ export class UserService {
 
     login(credentials: UserLoginModel ) {
       let userData = {
-        identifier:credentials.email, 
+        email:credentials.email,
+//        identifier:credentials.email, 
         password: credentials.password 
       };
 //      let contentHeader = new HttpHeaders({ "Content-Type":"application/json" });
-      return this.http.post(this.API_USER+'/auth/local', userData);
-//      return this.http.post(this.environmenT.API_IAM_ENDPOINT_LOGIN, userData)
+//      return this.http.post(this.API_USER+'/auth/local', userData);
+      return this.http.post(this.environmenT.API_IAM_ENDPOINT_LOGIN, userData)
 //, {'headers':contentHeader}); // Observable
     }
 

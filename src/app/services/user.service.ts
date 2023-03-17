@@ -23,7 +23,8 @@ export class UserService {
 
     register(credentials: UserRegisterModel ) {
       let userData = {
-        identifier:credentials.email, 
+//xx        identifier:credentials.email,
+        email:credentials.email,
         password: credentials.password 
       };
       return this.http.post(this.environmenT.API_IAM_ENDPOINT_REGISTER, userData); // Observable

@@ -19,11 +19,11 @@ export class UserService {
     private http:HttpClient, 
     private alertSvc:AlertService,
     private router:Router
-    ) { }
+    ) {}
 
     register(credentials: UserRegisterModel ) {
       let userData = {
-//xx        identifier:credentials.email,
+//iam node.js        identifier:credentials.email,
         email:credentials.email,
         password: credentials.password 
       };
@@ -33,13 +33,13 @@ export class UserService {
     login(credentials: UserLoginModel ) {
       let userData = {
         email:credentials.email,
-//        identifier:credentials.email, 
+//iam node.js        identifier:credentials.email, 
         password: credentials.password 
       };
-//      let contentHeader = new HttpHeaders({ "Content-Type":"application/json" });
-//      return this.http.post(this.API_USER+'/auth/local', userData);
+
+//iam node.js     return this.http.post(this.API_USER+'/auth/local', userData);
       return this.http.post(this.environmenT.API_IAM_ENDPOINT_LOGIN, userData)
-//, {'headers':contentHeader}); // Observable
+
     }
 
     logout() {
@@ -49,10 +49,11 @@ export class UserService {
     }
 
     isAuth():boolean {
-      let token = localStorage.getItem('token')
+      let token = localStorage.getItem('token');
       if(token!=null && token.length>100 ) {
         return true;
       }
       return false;
     }
+
 }

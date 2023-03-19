@@ -114,13 +114,6 @@ div.wrapper{
     max-width: calc(100w - 82px);
 }
 
-/*div.image{
-    min-width: 94px;
-    width: 94px;
-    height: 141px;
-    box-sizing: border-box;
-}*/
-
 img{
     min-width: 94px;
     width: 94px;
@@ -133,17 +126,6 @@ div.poster{
     height: 100%;
     background-color: var(--darkNightBlue);
 }
-
-/*div.details{
-    width: 100%;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap:wrap;
-    align-content: center;
-    align-items: center;
-    width: 100%;
-}*/
 
 div.first-line{
     display: flex;

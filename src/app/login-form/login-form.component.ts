@@ -41,10 +41,10 @@ export class LoginFormComponent {
             console.log( response);
   
             let userData = {
-//xx              id: response.user.id,
-//xx              token: response.jwt, 
-//xx              email : response.user.email,
-//xx              username : response.user.username,
+//iam node.js              id: response.user.id,
+//iam node.js              token: response.jwt, 
+//iam node.js              email : response.user.email,
+//iam node.js              username : response.user.username,
               token: response.token,
               email: response.email
             };

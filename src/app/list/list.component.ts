@@ -36,13 +36,6 @@ export class ListComponent {
    this.movieSvc.getSearchedMovies$()
     .subscribe( (foundMovies:MovieSearchTMDBModel[]) => this.searchedMovies = foundMovies);
 
-/*    this.movieSvc.getMovieDetails$()
-    .subscribe(
-      (movie: MovieDetailsTMDBModel)=> {
-        console.log(movie);
-        this.movie = movie;
-      }
-    );*/
   }
 
   getImgFullUrl(urlFragment:string):string {

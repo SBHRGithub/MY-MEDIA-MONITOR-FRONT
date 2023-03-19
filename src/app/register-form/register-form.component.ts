@@ -39,7 +39,6 @@ export class RegisterFormComponent {
           next: (response:any) => {
             console.log(response);
 
-//            if((response.status==200)||(response.status==201)) {
             if(response.email == this.registerForm.value.email) {
               this.router.navigate(['/login']);
               this.alertSvc.showAlert('You are registered');
